@@ -29,16 +29,18 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
         assetArray.removeAll()
         var eventsDictionary: NSDictionary = NSDictionary()
         
-        ref = Database.database().reference().child("Projects").child("Project 2")
+        ref = Database.database().reference().child("Projects").child(CurrentProj)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             if let eventDict = snapshot.value as?  [String:Any] {
                 eventsDictionary = eventDict as NSDictionary
                
-                let temp = eventsDictionary.value(forKey: "Asset List")!
+                let temp = eventsDictionary.value(forKey: "Asset List")
+                if(temp != nil){
                 let temp1 = (temp as AnyObject).components(separatedBy: ",")
                 
                 self.assetArray = temp1
                 self.AssetTableView.reloadData()
+            }
             }
         })
     }

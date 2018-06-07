@@ -58,6 +58,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         CurrentProj = self.projArray[indexPath.row] as! String
+        print("here")
+        
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "assets") as! AssetViewController
+        self.present(loginVC, animated: true, completion: nil)
     }
 
 
