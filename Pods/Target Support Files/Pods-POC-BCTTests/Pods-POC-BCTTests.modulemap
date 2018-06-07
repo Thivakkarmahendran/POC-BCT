@@ -1,0 +1,6 @@
+framework module Pods_POC_BCTTests {
+  umbrella header "Pods-POC-BCTTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

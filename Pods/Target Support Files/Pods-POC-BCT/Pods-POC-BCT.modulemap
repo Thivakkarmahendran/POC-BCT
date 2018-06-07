@@ -1,0 +1,6 @@
+framework module Pods_POC_BCT {
+  umbrella header "Pods-POC-BCT-umbrella.h"
+
+  export *
+  module * { export * }
+}
