@@ -21,6 +21,7 @@
 		CF8570F520C98FE70048BCD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8570F420C98FE70048BCD8 /* GoogleService-Info.plist */; };
 		CF8570F620C98FE70048BCD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8570F420C98FE70048BCD8 /* GoogleService-Info.plist */; };
 		CF8570F720C98FE70048BCD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8570F420C98FE70048BCD8 /* GoogleService-Info.plist */; };
+		CF8570F920C9BCF60048BCD8 /* AssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570F820C9BCF60048BCD8 /* AssetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		CF8570E620C98F2D0048BCD8 /* POC_BCTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POC_BCTUITests.swift; sourceTree = "<group>"; };
 		CF8570E820C98F2D0048BCD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF8570F420C98FE70048BCD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CF8570F820C9BCF60048BCD8 /* AssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetViewController.swift; sourceTree = "<group>"; };
 		E01283EDD8BB4576B2956232 /* Pods-POC-BCTTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCTTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCTTests/Pods-POC-BCTTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +147,7 @@
 			children = (
 				CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */,
 				CF8570C520C98F2B0048BCD8 /* ViewController.swift */,
+				CF8570F820C9BCF60048BCD8 /* AssetViewController.swift */,
 				CF8570C720C98F2B0048BCD8 /* Main.storyboard */,
 				CF8570CD20C98F2C0048BCD8 /* Assets.xcassets */,
 				CF8570CF20C98F2C0048BCD8 /* LaunchScreen.storyboard */,
@@ -391,6 +394,7 @@
 				CF8570CC20C98F2B0048BCD8 /* POC_BCT.xcdatamodeld in Sources */,
 				CF8570C620C98F2B0048BCD8 /* ViewController.swift in Sources */,
 				CF8570C420C98F2B0048BCD8 /* AppDelegate.swift in Sources */,
+				CF8570F920C9BCF60048BCD8 /* AssetViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

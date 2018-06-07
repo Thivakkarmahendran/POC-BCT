@@ -10,7 +10,10 @@ import UIKit
 import Firebase
 
 
-class ViewController: UIViewController, UITableViewDataSource {
+
+var CurrentProj = ""
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var ProjectTableView: UITableView!
     
     var ref: DatabaseReference!
@@ -51,6 +54,12 @@ class ViewController: UIViewController, UITableViewDataSource {
         cell.textLabel?.text = (self.projArray[indexPath.row] as! String)
         return cell
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        CurrentProj = self.projArray[indexPath.row] as! String
+    }
+
 
 }
 
