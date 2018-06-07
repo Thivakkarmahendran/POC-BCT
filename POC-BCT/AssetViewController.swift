@@ -25,6 +25,13 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
         getAssetList()
     }
     
+   
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     func getAssetList(){
         assetArray.removeAll()
         var eventsDictionary: NSDictionary = NSDictionary()
@@ -33,21 +40,16 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             if let eventDict = snapshot.value as?  [String:Any] {
                 eventsDictionary = eventDict as NSDictionary
-               
+                
                 let temp = eventsDictionary.value(forKey: "Asset List")
                 if(temp != nil){
-                let temp1 = (temp as AnyObject).components(separatedBy: ",")
-                
-                self.assetArray = temp1
-                self.AssetTableView.reloadData()
-            }
+                    let temp1 = (temp as AnyObject).components(separatedBy: ",")
+                    
+                    self.assetArray = temp1
+                    self.AssetTableView.reloadData()
+                }
             }
         })
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

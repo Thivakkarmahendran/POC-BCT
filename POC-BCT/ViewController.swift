@@ -55,11 +55,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+       
+        let share = UITableViewRowAction(style: .default, title: "Info") { (action, indexPath) in
+            CurrentProj = self.projArray[indexPath.row] as! String
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProjDetails") as! ProjectDetailTableViewController
+            self.present(loginVC, animated: true, completion: nil)
+        }
+        share.backgroundColor = UIColor.lightGray
+        
+        return [share]
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         CurrentProj = self.projArray[indexPath.row] as! String
-        print("here")
-        
         let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "assets") as! AssetViewController
         self.present(loginVC, animated: true, completion: nil)
     }
