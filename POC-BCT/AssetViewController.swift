@@ -43,9 +43,7 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 let temp = eventsDictionary.value(forKey: "Asset List")
                 if(temp != nil){
-                    let temp1 = (temp as AnyObject).components(separatedBy: ",")
-                    
-                    self.assetArray = temp1
+                    self.assetArray = temp as! Array<Any>
                     self.AssetTableView.reloadData()
                 }
             }
@@ -64,7 +62,12 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "project") as! ViewController
+        self.present(loginVC, animated: true, completion: nil)
     }
+    
+    
+    
     
     
 }
