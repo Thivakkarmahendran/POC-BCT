@@ -16,30 +16,43 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
    
     var pickerView = UIPickerView()
     var typeValue = "Project 3"
-    
-    
-    
     var ref: DatabaseReference!
     var assetArray: Array<Any> = []
     
     @IBOutlet var AssetTableView: UITableView!
     
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getAssetList()
     }
     
-   
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
+    func SendTrans(asset: String, from: String, to: String){
+        let data = ["Asset": asset, "From": from, "To":to]
+    
+        let date = Date()
+        let calender = Calendar.current
+        let components = calender.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
+        
+        let year = components.year
+        let month = components.month
+        let day = components.day
+        let hour = components.hour
+        let minute = components.minute
+        let second = components.second
+        
+        let ref = Database.database().reference().child("Transactions").child(String(year!)).child(String(month!)).child(String(day!)).child(String(hour!)).child(String(minute!)).child(String(second!)).setValue(data)
+        
+    }
+    
     
     func getAssetList(){
         assetArray.removeAll()
@@ -58,6 +71,28 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         })
     }
+    
+    func getAssetListofProj(proj:String, asset: String){
+        var assetArrayProj: Array<Any> = []
+        var eventsDictionary: NSDictionary = NSDictionary()
+        
+        ref = Database.database().reference().child("Projects").child(proj)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let eventDict = snapshot.value as?  [String:Any] {
+                eventsDictionary = eventDict as NSDictionary
+                
+                let temp = eventsDictionary.value(forKey: "Asset List")
+                if(temp != nil){
+                    assetArrayProj = temp as! Array<Any>
+                }
+                assetArrayProj.append(asset)
+                let ref = Database.database().reference().child("Projects").child(proj).child("Asset List").setValue(assetArrayProj)
+            }
+        })
+    }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.assetArray.count
@@ -79,7 +114,12 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            self.getAssetListofProj(proj: "Pool", asset: self.assetArray[indexPath.row] as! String)
+            self.SendTrans(asset: self.assetArray[indexPath.row] as! String, from: CurrentProj, to: "Pool")
             
+            self.assetArray.remove(at: indexPath.row)
+            let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Asset List").setValue(self.assetArray)
+            self.getAssetList()
         }
         
         
@@ -101,6 +141,7 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
                 print("You selected " + self.typeValue )
                 
                 self.getAssetListofProj(proj: self.typeValue, asset: self.assetArray[indexPath.row] as! String)
+                self.SendTrans(asset: self.assetArray[indexPath.row] as! String, from: CurrentProj, to: self.typeValue)
                 
                 self.assetArray.remove(at: indexPath.row)
                 let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Asset List").setValue(self.assetArray)
@@ -114,34 +155,9 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         return [move,delete]
     }
+
     
-    
-    
-    
-    func getAssetListofProj(proj:String, asset: String){
-         var assetArrayProj: Array<Any> = []
-        var eventsDictionary: NSDictionary = NSDictionary()
-        
-        ref = Database.database().reference().child("Projects").child(proj)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let eventDict = snapshot.value as?  [String:Any] {
-                eventsDictionary = eventDict as NSDictionary
-                
-                let temp = eventsDictionary.value(forKey: "Asset List")
-                if(temp != nil){
-                    assetArrayProj = temp as! Array<Any>
-                }
-                assetArrayProj.append(asset)
-                let ref = Database.database().reference().child("Projects").child(proj).child("Asset List").setValue(assetArrayProj)
-            }
-        })
-    }
-    
-    
-    
-    
-    
-    /////////
+    ///////////// PICKER
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -158,7 +174,7 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         typeValue = projArray[row] as! String
     }
-    
+    ////////////
     
     
     
