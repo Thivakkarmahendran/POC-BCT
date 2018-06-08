@@ -12,12 +12,13 @@ import Firebase
 
 
 var CurrentProj = ""
+var projArray: Array<Any> = []
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var ProjectTableView: UITableView!
     
     var ref: DatabaseReference!
-    var projArray: Array<Any> = []
+    
     
     
     override func viewDidLoad() {
@@ -34,7 +35,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
            if let eventDict = snapshot.value as?  [String:Any] {
              eventsDictionary = eventDict as NSDictionary
             
-           self.projArray = Array(eventsDictionary.allKeys)
+           projArray = Array(eventsDictionary.allKeys)
            self.ProjectTableView.reloadData()
          }
         })
@@ -46,30 +47,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.projArray.count
+        return projArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
-        cell.textLabel?.text = (self.projArray[indexPath.row] as! String)
+        cell.textLabel?.text = (projArray[indexPath.row] as! String)
         return cell
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
        
         let share = UITableViewRowAction(style: .default, title: "Info") { (action, indexPath) in
-            CurrentProj = self.projArray[indexPath.row] as! String
+            CurrentProj = projArray[indexPath.row] as! String
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProjDetails") as! ProjectDetailTableViewController
             self.present(loginVC, animated: true, completion: nil)
         }
-        share.backgroundColor = UIColor.lightGray
+        share.backgroundColor = UIColor.blue
         
         return [share]
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        CurrentProj = self.projArray[indexPath.row] as! String
+        CurrentProj = projArray[indexPath.row] as! String
         let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "assets") as! AssetViewController
         self.present(loginVC, animated: true, completion: nil)
     }
