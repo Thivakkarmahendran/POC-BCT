@@ -27,15 +27,16 @@ class SignInViewController: UIViewController{
    
     @IBAction func SignInButton(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-            if(user == nil){
+            
+            if(user == nil){ // ERROR
                 let alert = UIAlertController(title: "Error", message: error?.localizedDescription as! String, preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-           else if let user = user {
-               // let uid = user.uid
-               // let email = user.email
-               // let photoURL = user.photoURL
+           else if let user = user { // SIGN In sucess!!
+                let uid = user.uid
+                let email = user.email
+                let photoURL = user.photoURL
             }
         }
     }
