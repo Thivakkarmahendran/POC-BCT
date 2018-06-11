@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		40C49A349C5162975C0C2F38 /* Pods_POC_BCTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793A67BED6775F331EBE2E4C /* Pods_POC_BCTUITests.framework */; };
 		B5B0D75DD4BA7FD4D72928FA /* Pods_POC_BCT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7906C8FB1EE45FA4B7747B71 /* Pods_POC_BCT.framework */; };
+		CF74496520CEEF6400A9D062 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74496420CEEF6400A9D062 /* SignInViewController.swift */; };
 		CF8570C420C98F2B0048BCD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */; };
 		CF8570C620C98F2B0048BCD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570C520C98F2B0048BCD8 /* ViewController.swift */; };
 		CF8570C920C98F2B0048BCD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8570C720C98F2B0048BCD8 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		793A67BED6775F331EBE2E4C /* Pods_POC_BCTUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POC_BCTUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B09180085EE42795538D41 /* Pods-POC-BCT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCT/Pods-POC-BCT.debug.xcconfig"; sourceTree = "<group>"; };
 		AF65152E4A90250CFAA70737 /* Pods-POC-BCTTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCTTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCTTests/Pods-POC-BCTTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CF74496420CEEF6400A9D062 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CF8570C020C98F2B0048BCD8 /* POC-BCT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "POC-BCT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF8570C520C98F2B0048BCD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */,
 				CF8570C520C98F2B0048BCD8 /* ViewController.swift */,
+				CF74496420CEEF6400A9D062 /* SignInViewController.swift */,
 				CF8570F820C9BCF60048BCD8 /* AssetViewController.swift */,
 				CF8570FA20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift */,
 				CF8570C720C98F2B0048BCD8 /* Main.storyboard */,
@@ -374,11 +377,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-POC-BCT/Pods-POC-BCT-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -396,6 +401,7 @@
 			files = (
 				CF8570CC20C98F2B0048BCD8 /* POC_BCT.xcdatamodeld in Sources */,
 				CF8570FB20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift in Sources */,
+				CF74496520CEEF6400A9D062 /* SignInViewController.swift in Sources */,
 				CF8570C620C98F2B0048BCD8 /* ViewController.swift in Sources */,
 				CF8570C420C98F2B0048BCD8 /* AppDelegate.swift in Sources */,
 				CF8570F920C9BCF60048BCD8 /* AssetViewController.swift in Sources */,

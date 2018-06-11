@@ -8,6 +8,7 @@ target 'POC-BCT' do
   # Pods for POC-BCT
    pod 'Firebase/Core'
    pod 'Firebase/Database'
+   pod 'Firebase/Auth'
 
   target 'POC-BCTTests' do
     inherit! :search_paths
