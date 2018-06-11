@@ -63,7 +63,7 @@ class ProjectDetailTableViewController: UITableViewController {
     }
     
     @IBAction func doneButton(_ sender: Any) {
-        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "project") as! ViewController
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "project") as! ProjectViewController
         self.present(loginVC, animated: true, completion: nil)
     }
     
