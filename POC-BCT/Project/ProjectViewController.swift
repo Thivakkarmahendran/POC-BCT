@@ -11,8 +11,6 @@ import Firebase
 
 
 
-
-
 class ProjectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var ProjectTableView: UITableView!
     
@@ -29,14 +27,25 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
          projArray.removeAll()
          var eventsDictionary: NSDictionary = NSDictionary()
         
-         ref = Database.database().reference().child("Projects")
+         ref = Database.database().reference().child("Users").child(UserID)
          ref.observeSingleEvent(of: .value, with: { (snapshot) in
            if let eventDict = snapshot.value as?  [String:Any] {
              eventsDictionary = eventDict as NSDictionary
+             let temp = eventsDictionary.value(forKey: "Projects")
+           projArray = temp as! Array<Any>
             
-           projArray = Array(eventsDictionary.allKeys)
-           self.ProjectTableView.reloadData()
+            if(projArray.count == 0){
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
+                self.present(loginVC, animated: true, completion: nil)
+            }
+            else{
+                self.ProjectTableView.reloadData()
+            }
          }
+           else{
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
+                self.present(loginVC, animated: true, completion: nil)
+            }
         })
     }
 
