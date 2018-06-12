@@ -37,7 +37,11 @@ class homeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(indexPath.row == 2){
+        if(indexPath.row == 0){
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "project") as! ProjectViewController
+            self.present(loginVC, animated: true, completion: nil)
+        }
+       else if(indexPath.row == 2){
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createproj") as! ProjectCreateTableViewController
             self.present(loginVC, animated: true, completion: nil)
         }

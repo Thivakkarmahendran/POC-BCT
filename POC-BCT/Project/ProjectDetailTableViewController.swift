@@ -43,7 +43,7 @@ class ProjectDetailTableViewController: UITableViewController {
                 
                 let temp = eventsDictionary.value(forKey: "Project ID")
                 if(temp != nil){
-                    self.idLabel.text = String(temp as! Int)
+                    self.idLabel.text = "\(temp!)"
                 }
                 
                 let temp1 = eventsDictionary.value(forKey: "Cost when idle")
