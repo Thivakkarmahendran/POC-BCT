@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 import Firebase
 
+
+var UserID = ""
+
 class SignInViewController: UIViewController{
     
     @IBOutlet var emailTextField: UITextField!
@@ -34,9 +37,7 @@ class SignInViewController: UIViewController{
                 self.present(alert, animated: true, completion: nil)
             }
            else if let user = user { // SIGN In sucess!!
-                let uid = user.uid
-                let email = user.email
-                let photoURL = user.photoURL
+                 UserID = user.uid
             }
         }
     }
