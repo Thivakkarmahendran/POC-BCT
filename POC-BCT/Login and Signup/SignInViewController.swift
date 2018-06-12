@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 
 
-var UserID = ""
+
 
 class SignInViewController: UIViewController{
     
@@ -38,6 +38,9 @@ class SignInViewController: UIViewController{
             }
            else if let user = user { // SIGN In sucess!!
                  UserID = user.uid
+                
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
+                self.present(loginVC, animated: true, completion: nil)
             }
         }
     }

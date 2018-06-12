@@ -30,6 +30,11 @@ class SignUpViewController: UIViewController{
             Auth.auth().createUser(withEmail: emailTextField.text!, password: password2TextField.text!) { (authResult, error) in
                 if(authResult != nil){
                    ///// navigate to the home screen
+                    UserID = (authResult?.uid)!
+                    
+                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
+                    self.present(loginVC, animated: true, completion: nil)
+                    
                 }
                 else{
                     let alert = UIAlertController(title: "Error", message: error?.localizedDescription as! String, preferredStyle: UIAlertControllerStyle.alert)

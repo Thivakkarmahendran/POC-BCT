@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6269B7A94D84281276793911 /* Pods_POC_BCT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3B322F9F648E2879BB46198 /* Pods_POC_BCT.framework */; };
 		8165B30AD7A8501C1B8BAD27 /* Pods_POC_BCTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812AD33D1CF22859D1BF4919 /* Pods_POC_BCTTests.framework */; };
+		CF62F7B120D03440005281BF /* globalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62F7B020D03440005281BF /* globalVariables.swift */; };
+		CF62F7B320D0394A005281BF /* ProjectCreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62F7B220D0394A005281BF /* ProjectCreateTableViewController.swift */; };
 		CF74496520CEEF6400A9D062 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74496420CEEF6400A9D062 /* SignInViewController.swift */; };
 		CF74496720CEF9C500A9D062 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74496620CEF9C500A9D062 /* SignUpViewController.swift */; };
 		CF74496D20CF1A0300A9D062 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74496C20CF1A0300A9D062 /* homeViewController.swift */; };
@@ -53,6 +55,8 @@
 		812AD33D1CF22859D1BF4919 /* Pods_POC_BCTTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POC_BCTTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96507D51F2A5D0A5A1DEA704 /* Pods-POC-BCTTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCTTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCTTests/Pods-POC-BCTTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB6E9AAD0CDE48EB6DAA4E8B /* Pods-POC-BCTUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCTUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCTUITests/Pods-POC-BCTUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CF62F7B020D03440005281BF /* globalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globalVariables.swift; sourceTree = "<group>"; };
+		CF62F7B220D0394A005281BF /* ProjectCreateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreateTableViewController.swift; sourceTree = "<group>"; };
 		CF74496420CEEF6400A9D062 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CF74496620CEF9C500A9D062 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CF74496C20CF1A0300A9D062 /* homeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			children = (
 				CF8570C520C98F2B0048BCD8 /* ProjectViewController.swift */,
 				CF8570FA20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift */,
+				CF62F7B220D0394A005281BF /* ProjectCreateTableViewController.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */,
+				CF62F7B020D03440005281BF /* globalVariables.swift */,
 				CF74497020CF24E600A9D062 /* Home */,
 				CF74496820CF11F200A9D062 /* Login and Signup */,
 				CF74496920CF125100A9D062 /* Project */,
@@ -452,6 +458,8 @@
 			files = (
 				CF8570CC20C98F2B0048BCD8 /* POC_BCT.xcdatamodeld in Sources */,
 				CF74496720CEF9C500A9D062 /* SignUpViewController.swift in Sources */,
+				CF62F7B320D0394A005281BF /* ProjectCreateTableViewController.swift in Sources */,
+				CF62F7B120D03440005281BF /* globalVariables.swift in Sources */,
 				CF8570FB20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift in Sources */,
 				CF74496D20CF1A0300A9D062 /* homeViewController.swift in Sources */,
 				CF74496520CEEF6400A9D062 /* SignInViewController.swift in Sources */,

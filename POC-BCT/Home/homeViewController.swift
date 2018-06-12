@@ -36,6 +36,13 @@ class homeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if(indexPath.row == 2){
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createproj") as! ProjectCreateTableViewController
+            self.present(loginVC, animated: true, completion: nil)
+        }
+    }
+    
     
 
 }

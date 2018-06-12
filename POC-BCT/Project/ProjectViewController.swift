@@ -11,8 +11,7 @@ import Firebase
 
 
 
-var CurrentProj = ""
-var projArray: Array<Any> = []
+
 
 class ProjectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var ProjectTableView: UITableView!
