@@ -115,7 +115,6 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             self.getAssetListofProj(proj: "Pool", asset: self.assetArray[indexPath.row] as! String)
-            self.SendTrans(asset: self.assetArray[indexPath.row] as! String, from: CurrentProj, to: "Pool")
             
             self.assetArray.remove(at: indexPath.row)
             let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Asset List").setValue(self.assetArray)
