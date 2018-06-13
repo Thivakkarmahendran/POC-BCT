@@ -12,7 +12,7 @@ import Firebase
 
 class homeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
    
-    let titles = ["Projects", "General Pool", "Create Project", "Create Assset"]
+    let titles = ["Projects", "Pool (Assets)", "Create Project", "Create Asset"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,10 @@ class homeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(indexPath.row == 0){
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "project") as! ProjectViewController
+            self.present(loginVC, animated: true, completion: nil)
+        }
+        else if(indexPath.row == 1){
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pool") as! PoolViewController
             self.present(loginVC, animated: true, completion: nil)
         }
        else if(indexPath.row == 2){

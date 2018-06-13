@@ -9,8 +9,6 @@
 import UIKit
 import Firebase
 
-
-
 class ProjectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var ProjectTableView: UITableView!
     
@@ -22,6 +20,7 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
          getProjectList()
     }
+    
     
     func getProjectList(){
          projArray.removeAll()

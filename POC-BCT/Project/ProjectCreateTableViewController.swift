@@ -22,6 +22,10 @@ class ProjectCreateTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let uuid = UUID().uuidString
+        ProjectIDTextField.text = uuid
+        //print(uuid)
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
