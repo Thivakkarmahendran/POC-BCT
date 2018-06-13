@@ -29,6 +29,7 @@
 		CF8570F920C9BCF60048BCD8 /* AssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570F820C9BCF60048BCD8 /* AssetViewController.swift */; };
 		CF8570FB20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570FA20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift */; };
 		CFA5C1A320D184080002FFF3 /* PoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C1A220D184080002FFF3 /* PoolViewController.swift */; };
+		CFA5C1A620D1900F0002FFF3 /* AssetCreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C1A520D1900F0002FFF3 /* AssetCreateTableViewController.swift */; };
 		ED0C1935994D5CDB8BF56810 /* Pods_POC_BCTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 707B5C0DC717BA7EA7C35F01 /* Pods_POC_BCTUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		CF8570F820C9BCF60048BCD8 /* AssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetViewController.swift; sourceTree = "<group>"; };
 		CF8570FA20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailTableViewController.swift; sourceTree = "<group>"; };
 		CFA5C1A220D184080002FFF3 /* PoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolViewController.swift; sourceTree = "<group>"; };
+		CFA5C1A520D1900F0002FFF3 /* AssetCreateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCreateTableViewController.swift; sourceTree = "<group>"; };
 		D91ED1C95BC765FC66CFCE3B /* Pods-POC-BCT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCT/Pods-POC-BCT.debug.xcconfig"; sourceTree = "<group>"; };
 		E0BCA491E4F985491E6F106A /* Pods-POC-BCTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCTTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCTTests/Pods-POC-BCTTests.release.xcconfig"; sourceTree = "<group>"; };
 		F3B322F9F648E2879BB46198 /* Pods_POC_BCT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POC_BCT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				CF8570F820C9BCF60048BCD8 /* AssetViewController.swift */,
+				CFA5C1A520D1900F0002FFF3 /* AssetCreateTableViewController.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -210,7 +213,7 @@
 			children = (
 				CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */,
 				CF62F7B020D03440005281BF /* globalVariables.swift */,
-				CFA5C1A220D184080002FFF3 /* PoolViewController.swift */,
+				CFA5C1A420D18FEA0002FFF3 /* General Pool */,
 				CF74497020CF24E600A9D062 /* Home */,
 				CF74496820CF11F200A9D062 /* Login and Signup */,
 				CF74496920CF125100A9D062 /* Project */,
@@ -238,6 +241,14 @@
 				CF8570E820C98F2D0048BCD8 /* Info.plist */,
 			);
 			path = "POC-BCTUITests";
+			sourceTree = "<group>";
+		};
+		CFA5C1A420D18FEA0002FFF3 /* General Pool */ = {
+			isa = PBXGroup;
+			children = (
+				CFA5C1A220D184080002FFF3 /* PoolViewController.swift */,
+			);
+			path = "General Pool";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -460,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF8570CC20C98F2B0048BCD8 /* POC_BCT.xcdatamodeld in Sources */,
+				CFA5C1A620D1900F0002FFF3 /* AssetCreateTableViewController.swift in Sources */,
 				CF74496720CEF9C500A9D062 /* SignUpViewController.swift in Sources */,
 				CF62F7B320D0394A005281BF /* ProjectCreateTableViewController.swift in Sources */,
 				CF62F7B120D03440005281BF /* globalVariables.swift in Sources */,

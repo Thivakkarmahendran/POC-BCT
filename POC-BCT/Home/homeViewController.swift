@@ -49,6 +49,10 @@ class homeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createproj") as! ProjectCreateTableViewController
             self.present(loginVC, animated: true, completion: nil)
         }
+        else if(indexPath.row == 3){
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "createasset") as! AssetCreateTableViewController
+            self.present(loginVC, animated: true, completion: nil)
+        }
     }
     
     
