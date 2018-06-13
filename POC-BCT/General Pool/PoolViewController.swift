@@ -86,8 +86,10 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            let temparray = [String]()
+            let ref = Database.database().reference().child("Assets").child(self.poolArray[indexPath.row] as! String).setValue(temparray)
             self.poolArray.remove(at: indexPath.row)
-            let ref = Database.database().reference().child("Pool").setValue(self.poolArray)
+            let ref2 = Database.database().reference().child("Pool").setValue(self.poolArray)
             self.tableView.reloadData()
         }
         
