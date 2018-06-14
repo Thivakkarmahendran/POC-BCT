@@ -104,13 +104,6 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "project") as! ProjectViewController
-        self.present(loginVC, animated: true, completion: nil)
-    }
-    
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
@@ -175,6 +168,10 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     ////////////
     
+    @IBAction func backButton(_ sender: Any) {
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "project") as! ProjectViewController
+        self.present(loginVC, animated: true, completion: nil)
+    }
     
 }
 
