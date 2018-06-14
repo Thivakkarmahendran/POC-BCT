@@ -33,6 +33,18 @@ class homeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.cellTitle.text = titles[indexPath.row]
         
         
+        cell.layer.cornerRadius = 10.0
+        cell.layer.borderWidth = 4.0
+        cell.layer.borderColor = UIColor.clear.cgColor
+        cell.layer.masksToBounds = true
+        
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        cell.layer.shadowRadius = 4.0
+        cell.layer.shadowOpacity = 0.5
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
+        
         return cell
     }
     

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6269B7A94D84281276793911 /* Pods_POC_BCT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3B322F9F648E2879BB46198 /* Pods_POC_BCT.framework */; };
 		8165B30AD7A8501C1B8BAD27 /* Pods_POC_BCTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812AD33D1CF22859D1BF4919 /* Pods_POC_BCTTests.framework */; };
+		CF50016F20D2F0CA00084AB4 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = CF50016E20D2F0C900084AB4 /* 1.png */; };
+		CF50017120D2F0D100084AB4 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF50017020D2F0D100084AB4 /* 2.png */; };
 		CF62F7B120D03440005281BF /* globalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62F7B020D03440005281BF /* globalVariables.swift */; };
 		CF62F7B320D0394A005281BF /* ProjectCreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62F7B220D0394A005281BF /* ProjectCreateTableViewController.swift */; };
 		CF74496520CEEF6400A9D062 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74496420CEEF6400A9D062 /* SignInViewController.swift */; };
@@ -57,6 +59,8 @@
 		812AD33D1CF22859D1BF4919 /* Pods_POC_BCTTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POC_BCTTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96507D51F2A5D0A5A1DEA704 /* Pods-POC-BCTTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCTTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCTTests/Pods-POC-BCTTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB6E9AAD0CDE48EB6DAA4E8B /* Pods-POC-BCTUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCTUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCTUITests/Pods-POC-BCTUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CF50016E20D2F0C900084AB4 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		CF50017020D2F0D100084AB4 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		CF62F7B020D03440005281BF /* globalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globalVariables.swift; sourceTree = "<group>"; };
 		CF62F7B220D0394A005281BF /* ProjectCreateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreateTableViewController.swift; sourceTree = "<group>"; };
 		CF74496420CEEF6400A9D062 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,15 @@
 				BB6E9AAD0CDE48EB6DAA4E8B /* Pods-POC-BCTUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF50017220D2F0DC00084AB4 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				CF50016E20D2F0C900084AB4 /* 1.png */,
+				CF50017020D2F0D100084AB4 /* 2.png */,
+			);
+			path = Pictures;
 			sourceTree = "<group>";
 		};
 		CF74496820CF11F200A9D062 /* Login and Signup */ = {
@@ -218,6 +231,7 @@
 				CF74496820CF11F200A9D062 /* Login and Signup */,
 				CF74496920CF125100A9D062 /* Project */,
 				CF74496A20CF125A00A9D062 /* Assets */,
+				CF50017220D2F0DC00084AB4 /* Pictures */,
 				CF8570C720C98F2B0048BCD8 /* Main.storyboard */,
 				CF8570D220C98F2D0048BCD8 /* Info.plist */,
 				CF74496B20CF126600A9D062 /* Others */,
@@ -361,7 +375,9 @@
 			files = (
 				CF8570D120C98F2C0048BCD8 /* LaunchScreen.storyboard in Resources */,
 				CF8570F520C98FE70048BCD8 /* GoogleService-Info.plist in Resources */,
+				CF50016F20D2F0CA00084AB4 /* 1.png in Resources */,
 				CF8570CE20C98F2C0048BCD8 /* Assets.xcassets in Resources */,
+				CF50017120D2F0D100084AB4 /* 2.png in Resources */,
 				CF8570C920C98F2B0048BCD8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
