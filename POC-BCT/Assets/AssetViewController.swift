@@ -92,6 +92,29 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     
+    func getPoolList(asset: String){
+        var poolArray: Array<Any> = []
+        var eventsDictionary: NSDictionary = NSDictionary()
+        
+        ref = Database.database().reference()
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let eventDict = snapshot.value as?  [String:Any] {
+                eventsDictionary = eventDict as NSDictionary
+                let temp = eventsDictionary.value(forKey: "Pool")
+               
+                if(temp != nil){
+                    poolArray = temp as! Array<Any>
+                }
+                poolArray.append(asset)
+                let ref = Database.database().reference().child("Pool").setValue(poolArray)
+            }
+            else{
+                poolArray.append(asset)
+                let ref = Database.database().reference().child("Pool").setValue(poolArray)
+            }
+        })
+    }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,7 +130,9 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            self.getAssetListofProj(proj: "Pool", asset: self.assetArray[indexPath.row] as! String)
+            
+            
+            self.getPoolList(asset: self.assetArray[indexPath.row] as! String)
             
             self.assetArray.remove(at: indexPath.row)
             let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Asset List").setValue(self.assetArray)
