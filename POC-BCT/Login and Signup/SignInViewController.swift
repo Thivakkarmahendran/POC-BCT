@@ -18,9 +18,12 @@ class SignInViewController: UIViewController{
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

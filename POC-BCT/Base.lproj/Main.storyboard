@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hq0-R7-8d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hq0-R7-8d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -911,6 +911,7 @@
                             <constraint firstItem="7Ak-LS-ZbH" firstAttribute="trailing" secondItem="wQe-3M-nDN" secondAttribute="trailing" id="QSM-YP-S4w"/>
                             <constraint firstItem="wQe-3M-nDN" firstAttribute="bottom" secondItem="F5A-vb-aTT" secondAttribute="bottom" id="RJ3-hV-Bcr"/>
                             <constraint firstItem="F5A-vb-aTT" firstAttribute="trailing" secondItem="0By-vP-pLO" secondAttribute="trailing" constant="293" id="Uu7-1Z-Tfm"/>
+                            <constraint firstItem="0By-vP-pLO" firstAttribute="leading" secondItem="F5A-vb-aTT" secondAttribute="leading" id="daT-Du-QTU"/>
                             <constraint firstItem="0By-vP-pLO" firstAttribute="leading" secondItem="wQe-3M-nDN" secondAttribute="leading" id="eSR-v9-VuP"/>
                             <constraint firstItem="7Ak-LS-ZbH" firstAttribute="leading" secondItem="1Pc-cB-Iyv" secondAttribute="leading" id="fpa-Qt-3B8"/>
                             <constraint firstItem="7Ak-LS-ZbH" firstAttribute="leading" secondItem="0By-vP-pLO" secondAttribute="leading" id="jOf-bB-4kB"/>

@@ -136,7 +136,8 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             self.assetArray.remove(at: indexPath.row)
             let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Asset List").setValue(self.assetArray)
-            self.getAssetList()
+            self.AssetTableView.reloadData()
+            //self.getAssetList()
         }
         
         
