@@ -125,7 +125,7 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         move.backgroundColor = UIColor.blue
         
-        return [delete, move]
+        return [move, delete]
     }
     
     func getAssetListofProj(proj:String, asset: String){
