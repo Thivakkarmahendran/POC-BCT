@@ -16,7 +16,7 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
    
     var pickerView = UIPickerView()
     var typeValue = "Project 3"
-    var ref: DatabaseReference!
+    
     var assetArray: Array<Any> = []
     
     @IBOutlet var AssetTableView: UITableView!
@@ -34,7 +34,7 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     
-    
+    /// not called anywhere yet
     func SendTrans(asset: String, from: String, to: String){
         let data = ["Asset": asset, "From": from, "To":to]
     
@@ -71,6 +71,7 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         })
     }
+    
     
     func getAssetListofProj(proj:String, asset: String){
         var assetArrayProj: Array<Any> = []

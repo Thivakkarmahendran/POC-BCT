@@ -14,7 +14,6 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet var tableView: UITableView!
     var poolArray: Array<Any> = []
-     var ref: DatabaseReference!
       var typeValue = ""
     
      var pickerView = UIPickerView()
@@ -22,7 +21,7 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         getPoolList()
-        getProjectList()
+        getProjectList(Loc: "pool")
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,19 +55,6 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    func getProjectList(){
-        projArray.removeAll()
-        var eventsDictionary: NSDictionary = NSDictionary()
-        
-        ref = Database.database().reference().child("Users").child(UserID)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let eventDict = snapshot.value as?  [String:Any] {
-                eventsDictionary = eventDict as NSDictionary
-                let temp = eventsDictionary.value(forKey: "Projects")
-                projArray = temp as! Array<Any>
-            }
-        })
-    }
 
     
     

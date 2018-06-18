@@ -16,10 +16,9 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "loadProjectList"), object: nil)
         getProjectList(Loc: "Projectview")
     }
-    
     
     @objc func loadList(){
         if(projArray.count == 0){
@@ -30,9 +29,6 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
             self.ProjectTableView.reloadData()
         }
     }
-    
-    
-    
     
     //////Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -29,7 +29,7 @@ func getProjectList(Loc: String){
                 projArray = temp as! Array<Any>
                 
                 if(Loc == "Projectview"){
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadProjectList"), object: nil)
                 }
             }
             else{

@@ -18,13 +18,12 @@ class ProjectDetailTableViewController: UITableViewController {
     @IBOutlet var valueLabel: UILabel!
     
     
-    var ref: DatabaseReference!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = CurrentProj
         getProjInfo()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
