@@ -10,49 +10,31 @@ import UIKit
 import Firebase
 
 class ProjectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet var ProjectTableView: UITableView!
-    
-    var ref: DatabaseReference!
-    
+    @IBOutlet  var ProjectTableView: UITableView!
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         getProjectList()
+         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        getProjectList(Loc: "Projectview")
     }
     
     
-    func getProjectList(){
-         projArray.removeAll()
-         var eventsDictionary: NSDictionary = NSDictionary()
-        
-         ref = Database.database().reference().child("Users").child(UserID)
-         ref.observeSingleEvent(of: .value, with: { (snapshot) in
-           if let eventDict = snapshot.value as?  [String:Any] {
-             eventsDictionary = eventDict as NSDictionary
-             let temp = eventsDictionary.value(forKey: "Projects")
-           projArray = temp as! Array<Any>
-            
-            if(projArray.count == 0){
-                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-                self.present(loginVC, animated: true, completion: nil)
-            }
-            else{
-                self.ProjectTableView.reloadData()
-            }
-         }
-           else{
-                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-                self.present(loginVC, animated: true, completion: nil)
-            }
-        })
+    @objc func loadList(){
+        if(projArray.count == 0){
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
+            self.present(loginVC, animated: true, completion: nil)
+        }
+        else{
+            self.ProjectTableView.reloadData()
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
+    
+    
+    
+    //////Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return projArray.count
     }
@@ -65,14 +47,14 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
        
-        let share = UITableViewRowAction(style: .default, title: "Info") { (action, indexPath) in
+        let info = UITableViewRowAction(style: .default, title: "Info") { (action, indexPath) in
             CurrentProj = projArray[indexPath.row] as! String
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProjDetails") as! ProjectDetailTableViewController
             self.present(loginVC, animated: true, completion: nil)
         }
-        share.backgroundColor = UIColor.blue
+        info.backgroundColor = UIColor.blue
         
-        return [share]
+        return [info]
     }
     
     
