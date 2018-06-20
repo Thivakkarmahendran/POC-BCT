@@ -10,11 +10,15 @@ import Foundation
 import  UIKit
 import  Firebase
 
+
+var assetList: NSDictionary = [:]
+
+
 var UserID = ""
 
 var CurrentProj = ""
 var projArray: Array<Any> = []
- var ref: DatabaseReference!
+var ref: DatabaseReference!
 
 
 func getProjectList(Loc: String){

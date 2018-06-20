@@ -13,15 +13,18 @@ import Firebase
 class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet var tableView: UITableView!
-    var poolArray: Array<Any> = []
-      var typeValue = ""
     
+    //var poolArray: Array<Any> = []
+    var typeValue = ""
      var pickerView = UIPickerView()
+    
+    var poolIDArray: Array<String> = []
+     var poolNameArray: Array<String> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getPoolList()
-        getProjectList(Loc: "pool")
+        
+        getAssetList()
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,47 +32,49 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
-    func getPoolList(){
-        poolArray.removeAll()
-        var eventsDictionary: NSDictionary = NSDictionary()
-        
-        ref = Database.database().reference()
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let eventDict = snapshot.value as?  [String:Any] {
-                eventsDictionary = eventDict as NSDictionary
-                let temp = eventsDictionary.value(forKey: "Pool")
-                if(temp == nil){
-                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-                    self.present(loginVC, animated: true, completion: nil)
-                }
-                else{
-                    self.poolArray = temp as! Array<Any>
-                    self.tableView.reloadData()
-                }
-              }
-             else{
-                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-                self.present(loginVC, animated: true, completion: nil)
-            }
-        })
+    
+    //Gets the asset lists from the server
+    func getAssetList(){
+         ref = Database.database().reference()
+        ref.child("Assets").observeSingleEvent(of: .value, with: { (snapshot) in
+            assetList = snapshot.value as! NSDictionary
+            
+            self.getBenched()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
+    // gets the list of benches assets from the assetList array
+    func getBenched(){
+        let idlist = assetList.allKeys
+        for id in idlist {
+            let asset = assetList.value(forKey: id as! String) as! NSDictionary
+            if(asset.value(forKey: "bench") as! Int == 1){
+                poolIDArray.append(id as! String)
+                poolNameArray.append(asset.value(forKey: "Name") as! String)
+            }
+        }
+        tableView.reloadData()
+    }
     
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return poolArray.count
+        return poolNameArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
-        cell.textLabel?.text = (poolArray[indexPath.row] as! String)
+        cell.textLabel?.text = (poolNameArray[indexPath.row])
         return cell
     }
     
+    /*
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             let temparray = [String]()
@@ -112,6 +117,7 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         move.backgroundColor = UIColor.blue
         
         return [move, delete]
+     
     }
     
     func getAssetListofProj(proj:String, asset: String){
@@ -133,6 +139,7 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
     }
     
+    */
     
     ///////////// PICKER
     
@@ -153,6 +160,8 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
    
     ////////////
+ 
+ 
     
     @IBAction func backButton(_ sender: Any) {
         let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController

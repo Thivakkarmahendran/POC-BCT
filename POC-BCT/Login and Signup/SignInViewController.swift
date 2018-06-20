@@ -40,7 +40,7 @@ class SignInViewController: UIViewController{
                 self.present(alert, animated: true, completion: nil)
             }
            else if let user = user { // SIGN In sucess!!
-                 UserID = user.uid
+                 UserID = user.user.uid
                 
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
                 self.present(loginVC, animated: true, completion: nil)
@@ -49,6 +49,7 @@ class SignInViewController: UIViewController{
     }
     
     @IBAction func SignUpButton(_ sender: Any) {
+        
         let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "signup") as! SignUpViewController
         self.present(loginVC, animated: true, completion: nil)
         
