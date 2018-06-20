@@ -12,7 +12,7 @@ import  Firebase
 
 
 var assetList: NSDictionary = [:]
-
+var locationList: NSDictionary = [:]
 
 var UserID = ""
 

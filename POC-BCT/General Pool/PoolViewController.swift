@@ -19,7 +19,8 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
      var pickerView = UIPickerView()
     
     var poolIDArray: Array<String> = []
-     var poolNameArray: Array<String> = []
+    var poolNameArray: Array<String> = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +28,10 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         getAssetList()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
+
     //Gets the asset lists from the server
     func getAssetList(){
-         ref = Database.database().reference()
+        ref = Database.database().reference()
         ref.child("Assets").observeSingleEvent(of: .value, with: { (snapshot) in
             assetList = snapshot.value as! NSDictionary
             
@@ -56,13 +52,78 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 poolNameArray.append(asset.value(forKey: "Name") as! String)
             }
         }
+        getLocationList()
+    }
+    
+    
+    
+    func getLocationList(){
+        ref = Database.database().reference()
+        ref.child("Location").observeSingleEvent(of: .value, with: { (snapshot) in
+            locationList = snapshot.value as! NSDictionary
+            self.sortLocations()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    struct LocAsset {
+        var sectionName : String!
+        var sectionObjects : [String]!
+    }
+     var LocAssetArray = [LocAsset]()
+    
+    
+    func sortLocations(){
+        let catlist = locationList.allKeys
+         for cat in catlist {
+            let UserList = locationList.value(forKey: cat as! String) as! NSDictionary
+            var temp: Array<String> = []
+            for user in UserList.allKeys {
+              
+            let id = UserList.value(forKey: user as! String) as! String
+            let index = poolIDArray.index(of: id)
+            temp.append(poolNameArray[index!])
+ 
+            // temp.append(UserList.value(forKey: user as! String) as! String)
+            }
+            LocAssetArray.append(LocAsset(sectionName: cat as! String, sectionObjects: temp))
+        }
         tableView.reloadData()
     }
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return LocAssetArray.count
+    }
     
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(LocAssetArray.count != 0){
+            return LocAssetArray[section].sectionObjects.count
+        }
+        else{
+            return 0
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
+        cell.textLabel?.text =  LocAssetArray[indexPath.section].sectionObjects[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+         return LocAssetArray[section].sectionName
+    }
+    
+    
+    
+    
+    /*
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return poolNameArray.count
     }
@@ -72,75 +133,12 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.textLabel?.text = (poolNameArray[indexPath.row])
         return cell
     }
+  */
     
-    /*
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            let temparray = [String]()
-            let ref = Database.database().reference().child("Assets").child(self.poolArray[indexPath.row] as! String).setValue(temparray)
-            self.poolArray.remove(at: indexPath.row)
-            let ref2 = Database.database().reference().child("Pool").setValue(self.poolArray)
-            self.tableView.reloadData()
-        }
-        
-        
-        
-        let move = UITableViewRowAction(style: .default, title: "Move") { (action, indexPath) in
-            print(projArray)
-            
-            let alert = UIAlertController(title: "Move to:", message: "\n\n\n\n\n\n", preferredStyle: .alert)
-            alert.isModalInPopover = true
-            
-            let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
-            
-            alert.view.addSubview(pickerFrame)
-            pickerFrame.dataSource = self
-            pickerFrame.delegate = self
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (UIAlertAction) in
-                
-                print("You selected " + self.typeValue)
-                
-                
-                self.getAssetListofProj(proj: self.typeValue, asset: self.poolArray[indexPath.row] as! String)
-                
-                self.poolArray.remove(at: indexPath.row)
-                let ref = Database.database().reference().child("Pool").setValue(self.poolArray)
-                
-                self.tableView.reloadData()
-            }))
-            self.present(alert,animated: true, completion: nil )
-            
-        }
-        move.backgroundColor = UIColor.blue
-        
-        return [move, delete]
-     
-    }
     
-    func getAssetListofProj(proj:String, asset: String){
-        var assetArrayProj: Array<Any> = []
-        var eventsDictionary: NSDictionary = NSDictionary()
-        
-        ref = Database.database().reference().child("Projects").child(proj)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let eventDict = snapshot.value as?  [String:Any] {
-                eventsDictionary = eventDict as NSDictionary
-                
-                let temp = eventsDictionary.value(forKey: "Asset List")
-                if(temp != nil){
-                    assetArrayProj = temp as! Array<Any>
-                }
-                assetArrayProj.append(asset)
-                let ref = Database.database().reference().child("Projects").child(proj).child("Asset List").setValue(assetArrayProj)
-            }
-        })
-    }
+    /////////////////////////////////////////////////////////////////////////////////////////////
     
-    */
-    
+   
     ///////////// PICKER
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
