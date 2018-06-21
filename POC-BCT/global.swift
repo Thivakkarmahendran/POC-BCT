@@ -14,8 +14,11 @@ import  Firebase
 var assetList: NSDictionary = [:]
 var locationList: NSDictionary = [:]
 var skillList: NSDictionary = [:]
-
 var UserID = ""
+var userProjList: Array<String> = []
+var ProjList: NSDictionary = [:]
+
+
 
 var CurrentProj = ""
 var projArray: Array<Any> = []

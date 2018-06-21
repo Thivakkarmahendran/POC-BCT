@@ -102,7 +102,7 @@ class loginViewController: UIViewController {
                 else if let user = user { // SIGN In sucess!!
                     UserID = user.user.uid
                     
-                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
+                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home1") as! homeTabController
                     self.present(loginVC, animated: true, completion: nil)
                 }
             }
@@ -127,7 +127,7 @@ class loginViewController: UIViewController {
                         ///// navigate to the home screen
                         UserID = (authResult?.user.uid)!
                         
-                        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
+                        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home1") as! homeTabController
                         self.present(loginVC, animated: true, completion: nil)
                         
                     }

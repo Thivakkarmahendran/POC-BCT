@@ -34,6 +34,7 @@
 		CFAFBAC420DC48A0001A4C98 /* AMInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFAFBAC220DC48A0001A4C98 /* AMInputView.xib */; };
 		CFAFBAC720DC497E001A4C98 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAFBAC620DC497E001A4C98 /* loginViewController.swift */; };
 		CFAFBAC920DC4AF3001A4C98 /* bctLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFAFBAC820DC4AF3001A4C98 /* bctLogo.jpg */; };
+		CFAFBACB20DC5856001A4C98 /* homeTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAFBACA20DC5856001A4C98 /* homeTabController.swift */; };
 		ED0C1935994D5CDB8BF56810 /* Pods_POC_BCTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 707B5C0DC717BA7EA7C35F01 /* Pods_POC_BCTUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		CFAFBAC220DC48A0001A4C98 /* AMInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMInputView.xib; sourceTree = "<group>"; };
 		CFAFBAC620DC497E001A4C98 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		CFAFBAC820DC4AF3001A4C98 /* bctLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bctLogo.jpg; sourceTree = "<group>"; };
+		CFAFBACA20DC5856001A4C98 /* homeTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeTabController.swift; sourceTree = "<group>"; };
 		D91ED1C95BC765FC66CFCE3B /* Pods-POC-BCT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCT/Pods-POC-BCT.debug.xcconfig"; sourceTree = "<group>"; };
 		E0BCA491E4F985491E6F106A /* Pods-POC-BCTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCTTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCTTests/Pods-POC-BCTTests.release.xcconfig"; sourceTree = "<group>"; };
 		F3B322F9F648E2879BB46198 /* Pods_POC_BCT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POC_BCT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,6 +232,7 @@
 			children = (
 				CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */,
 				CF62F7B020D03440005281BF /* global.swift */,
+				CFAFBACA20DC5856001A4C98 /* homeTabController.swift */,
 				CFAFBAC020DC48A0001A4C98 /* AMInputView */,
 				CFA5C1A420D18FEA0002FFF3 /* General Pool */,
 				CF74497020CF24E600A9D062 /* Home */,
@@ -518,6 +521,7 @@
 				CFA5C1A620D1900F0002FFF3 /* AssetCreateTableViewController.swift in Sources */,
 				CF62F7B320D0394A005281BF /* ProjectCreateTableViewController.swift in Sources */,
 				CF62F7B120D03440005281BF /* global.swift in Sources */,
+				CFAFBACB20DC5856001A4C98 /* homeTabController.swift in Sources */,
 				CFA5C1A320D184080002FFF3 /* PoolViewController.swift in Sources */,
 				CF8570FB20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift in Sources */,
 				CF74496D20CF1A0300A9D062 /* homeViewController.swift in Sources */,

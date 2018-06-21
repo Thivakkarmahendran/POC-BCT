@@ -12,79 +12,63 @@ import Firebase
 class ProjectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet  var ProjectTableView: UITableView!
 
-    
+    var projNameArray: Array<String> = []
+     var projIDArray: Array<String> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "loadProjectList"), object: nil)
-        //getProjectList(Loc: "Projectview")
-        
-        getProjectList()
+        getUserProjectList()
+    }
+    
+    //Gets the user project lists from the server
+    func getUserProjectList(){
+        ref = Database.database().reference()
+        ref.child("Users").child(UserID).observeSingleEvent(of: .value, with: { (snapshot) in
+           let temp = snapshot.value as! NSDictionary
+           let temp1 = temp.value(forKey: "Projects") as! NSDictionary
+            userProjList =  temp1.allValues as! Array<String>
+           self.getProjectList()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
     //Gets the project lists from the server
     func getProjectList(){
         ref = Database.database().reference()
-        ref.child("Users").child(UserID).observeSingleEvent(of: .value, with: { (snapshot) in
-            let temp = snapshot.value as! NSDictionary
-            print(temp)
-            
-            
-            
+        ref.child("Projects").observeSingleEvent(of: .value, with: { (snapshot) in
+            ProjList = snapshot.value as! NSDictionary
+            self.convertIDtoProjName()
         }) { (error) in
             print(error.localizedDescription)
         }
     }
     
     
-    
-    /////////////////
-    /*
-    @objc func loadList(){
-        if(projArray.count == 0){
-            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-            self.present(loginVC, animated: true, completion: nil)
+    func convertIDtoProjName(){
+        let idlist = ProjList.allKeys
+        for id in idlist {
+            let project = ProjList.value(forKey: id as! String) as! NSDictionary
+            if(userProjList.contains(id as! String)){
+                projIDArray.append(id as! String)
+                projNameArray.append(project.value(forKey: "Name") as! String)
+            }
         }
-        else{
-            self.ProjectTableView.reloadData()
-        }
+        ProjectTableView.reloadData()
     }
- */
+    
     
     //////Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return projArray.count
+        return projNameArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
-        cell.textLabel?.text = (projArray[indexPath.row] as! String)
+        cell.textLabel?.text = (projNameArray[indexPath.row] )
         return cell
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-       
-        let info = UITableViewRowAction(style: .default, title: "Info") { (action, indexPath) in
-            CurrentProj = projArray[indexPath.row] as! String
-            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProjDetails") as! ProjectDetailTableViewController
-            self.present(loginVC, animated: true, completion: nil)
-        }
-        info.backgroundColor = UIColor.blue
-        
-        return [info]
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        CurrentProj = projArray[indexPath.row] as! String
-        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "assets") as! AssetViewController
-        self.present(loginVC, animated: true, completion: nil)
-    }
-
-    @IBAction func backButton(_ sender: Any) {
-        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-        self.present(loginVC, animated: true, completion: nil)
-    }
     
     
 }

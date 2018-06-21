@@ -49,10 +49,8 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let idlist = assetList.allKeys
         for id in idlist {
             let asset = assetList.value(forKey: id as! String) as! NSDictionary
-            if(asset.value(forKey: "bench") as! Int == 1){
                 poolIDArray.append(id as! String)
                 poolNameArray.append(asset.value(forKey: "Name") as! String)
-            }
         }
         getLocationList()
     }
@@ -152,11 +150,6 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 break
         }
         tableView.reloadData()
-    }
-    
-    @IBAction func backButton(_ sender: Any) {
-        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-        self.present(loginVC, animated: true, completion: nil)
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
