@@ -13,13 +13,15 @@ import Firebase
 class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var segmentControl: UISegmentedControl!
     
     //var poolArray: Array<Any> = []
     var typeValue = ""
-     var pickerView = UIPickerView()
+    var pickerView = UIPickerView()
     
     var poolIDArray: Array<String> = []
     var poolNameArray: Array<String> = []
+    var segmentChoice = 0
 
     
     override func viewDidLoad() {
@@ -91,33 +93,67 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         tableView.reloadData()
     }
+    ////////////////////////////////////////////
     
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    @IBAction func SegmentChange(_ sender: Any) {
+        switch segmentControl.selectedSegmentIndex {
+            case 0:
+                segmentChoice = 0;
+            case 1:
+                segmentChoice = 1;
+            default:
+                break
+        }
+        tableView.reloadData()
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return LocAssetArray.count
+        if(segmentChoice == 0){
+            return 1
+        }
+        else{
+            return LocAssetArray.count
+        }
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(LocAssetArray.count != 0){
-            return LocAssetArray[section].sectionObjects.count
+        if(segmentChoice == 0){
+           return poolNameArray.count
         }
         else{
-            return 0
+            if(LocAssetArray.count != 0){
+                return LocAssetArray[section].sectionObjects.count
+            }
+            else{
+                return 0
+            }
         }
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
-        cell.textLabel?.text =  LocAssetArray[indexPath.section].sectionObjects[indexPath.row]
-        
-        return cell
+        if(segmentChoice == 0){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
+            cell.textLabel?.text = (poolNameArray[indexPath.row])
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
+            cell.textLabel?.text =  LocAssetArray[indexPath.section].sectionObjects[indexPath.row]
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-         return LocAssetArray[section].sectionName
+        if(segmentChoice == 0){
+            return ""
+        }
+        else{
+             return LocAssetArray[section].sectionName
+        }
     }
     
     
@@ -136,7 +172,13 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
   */
     
     
-    /////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    
+    
+    
     
    
     ///////////// PICKER

@@ -944,7 +944,7 @@
                                 <size key="shadowOffset" width="3" height="4"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="100" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wQe-3M-nDN">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="155" width="375" height="512"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProjectCell" id="HDd-UV-VMl">
@@ -964,7 +964,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0By-vP-pLO">
                                 <rect key="frame" x="0.0" y="20" width="82" height="92"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="92" id="qaP-dS-POl"/>
+                                    <constraint firstAttribute="height" constant="92" id="Mzv-to-nqn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <state key="normal" title="  Back"/>
@@ -972,25 +972,41 @@
                                     <action selector="backButton:" destination="jEd-zL-nUk" eventType="touchUpInside" id="6xi-GI-iD0"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z6J-mH-TW9">
+                                <rect key="frame" x="16" y="120" width="343" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="C8U-fJ-LCU"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Location"/>
+                                </segments>
+                                <connections>
+                                    <action selector="SegmentChange:" destination="jEd-zL-nUk" eventType="valueChanged" id="f8x-xe-Ucn"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wQe-3M-nDN" firstAttribute="top" secondItem="0By-vP-pLO" secondAttribute="bottom" constant="8" symbolic="YES" id="1Lh-7c-z6N"/>
-                            <constraint firstItem="7Ak-LS-ZbH" firstAttribute="top" secondItem="0By-vP-pLO" secondAttribute="top" id="HYD-Y2-qMe"/>
-                            <constraint firstItem="7Ak-LS-ZbH" firstAttribute="trailing" secondItem="wQe-3M-nDN" secondAttribute="trailing" id="QSM-YP-S4w"/>
-                            <constraint firstItem="wQe-3M-nDN" firstAttribute="bottom" secondItem="F5A-vb-aTT" secondAttribute="bottom" id="RJ3-hV-Bcr"/>
-                            <constraint firstItem="F5A-vb-aTT" firstAttribute="trailing" secondItem="0By-vP-pLO" secondAttribute="trailing" constant="293" id="Uu7-1Z-Tfm"/>
-                            <constraint firstItem="0By-vP-pLO" firstAttribute="leading" secondItem="F5A-vb-aTT" secondAttribute="leading" id="daT-Du-QTU"/>
-                            <constraint firstItem="0By-vP-pLO" firstAttribute="leading" secondItem="wQe-3M-nDN" secondAttribute="leading" id="eSR-v9-VuP"/>
-                            <constraint firstItem="7Ak-LS-ZbH" firstAttribute="leading" secondItem="1Pc-cB-Iyv" secondAttribute="leading" id="fpa-Qt-3B8"/>
-                            <constraint firstItem="7Ak-LS-ZbH" firstAttribute="leading" secondItem="0By-vP-pLO" secondAttribute="leading" id="jOf-bB-4kB"/>
-                            <constraint firstItem="7Ak-LS-ZbH" firstAttribute="top" secondItem="F5A-vb-aTT" secondAttribute="top" id="kUa-n9-N5f"/>
-                            <constraint firstItem="wQe-3M-nDN" firstAttribute="top" secondItem="7Ak-LS-ZbH" secondAttribute="bottom" constant="8" symbolic="YES" id="liG-Aj-XH9"/>
-                            <constraint firstAttribute="trailing" secondItem="7Ak-LS-ZbH" secondAttribute="trailing" id="vkq-eP-dVo"/>
+                            <constraint firstItem="7Ak-LS-ZbH" firstAttribute="leading" secondItem="0By-vP-pLO" secondAttribute="leading" id="0CC-zP-0Kb"/>
+                            <constraint firstItem="F5A-vb-aTT" firstAttribute="trailing" secondItem="0By-vP-pLO" secondAttribute="trailing" constant="293" id="0oA-7c-T3h"/>
+                            <constraint firstItem="Z6J-mH-TW9" firstAttribute="top" secondItem="0By-vP-pLO" secondAttribute="bottom" constant="8" symbolic="YES" id="30P-Wh-cjK"/>
+                            <constraint firstItem="0By-vP-pLO" firstAttribute="top" secondItem="F5A-vb-aTT" secondAttribute="top" id="9ni-Nl-B3b"/>
+                            <constraint firstItem="Z6J-mH-TW9" firstAttribute="leading" secondItem="1Pc-cB-Iyv" secondAttribute="leadingMargin" id="E7a-Id-oHv"/>
+                            <constraint firstItem="wQe-3M-nDN" firstAttribute="bottom" secondItem="F5A-vb-aTT" secondAttribute="bottom" id="Hra-W1-kaG"/>
+                            <constraint firstItem="7Ak-LS-ZbH" firstAttribute="leading" secondItem="1Pc-cB-Iyv" secondAttribute="leading" id="KqP-vU-JRt"/>
+                            <constraint firstItem="0By-vP-pLO" firstAttribute="top" secondItem="7Ak-LS-ZbH" secondAttribute="top" id="L6v-MR-ouL"/>
+                            <constraint firstItem="7Ak-LS-ZbH" firstAttribute="centerX" secondItem="Z6J-mH-TW9" secondAttribute="centerX" id="LHo-kS-ylS"/>
+                            <constraint firstAttribute="trailing" secondItem="7Ak-LS-ZbH" secondAttribute="trailing" id="MWY-gm-3Ez"/>
+                            <constraint firstItem="7Ak-LS-ZbH" firstAttribute="leading" secondItem="wQe-3M-nDN" secondAttribute="leading" id="Tue-se-vlt"/>
+                            <constraint firstItem="wQe-3M-nDN" firstAttribute="top" secondItem="Z6J-mH-TW9" secondAttribute="bottom" constant="8" symbolic="YES" id="Wzc-Mk-jSk"/>
+                            <constraint firstItem="7Ak-LS-ZbH" firstAttribute="trailing" secondItem="wQe-3M-nDN" secondAttribute="trailing" id="ngF-1H-HOl"/>
+                            <constraint firstItem="Z6J-mH-TW9" firstAttribute="top" secondItem="7Ak-LS-ZbH" secondAttribute="bottom" constant="8" symbolic="YES" id="zbQ-GW-78V"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F5A-vb-aTT"/>
                     </view>
                     <connections>
+                        <outlet property="segmentControl" destination="Z6J-mH-TW9" id="O6X-HP-NtO"/>
                         <outlet property="tableView" destination="wQe-3M-nDN" id="GDV-kw-pf9"/>
                     </connections>
                 </viewController>
