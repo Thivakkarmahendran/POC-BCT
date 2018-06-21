@@ -13,8 +13,6 @@
 		CF50017120D2F0D100084AB4 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF50017020D2F0D100084AB4 /* 2.png */; };
 		CF62F7B120D03440005281BF /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62F7B020D03440005281BF /* global.swift */; };
 		CF62F7B320D0394A005281BF /* ProjectCreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62F7B220D0394A005281BF /* ProjectCreateTableViewController.swift */; };
-		CF74496520CEEF6400A9D062 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74496420CEEF6400A9D062 /* SignInViewController.swift */; };
-		CF74496720CEF9C500A9D062 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74496620CEF9C500A9D062 /* SignUpViewController.swift */; };
 		CF74496D20CF1A0300A9D062 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74496C20CF1A0300A9D062 /* homeViewController.swift */; };
 		CF74496F20CF1ECA00A9D062 /* homeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74496E20CF1ECA00A9D062 /* homeCollectionCell.swift */; };
 		CF8570C420C98F2B0048BCD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */; };
@@ -67,8 +65,6 @@
 		CF50017020D2F0D100084AB4 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		CF62F7B020D03440005281BF /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		CF62F7B220D0394A005281BF /* ProjectCreateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreateTableViewController.swift; sourceTree = "<group>"; };
-		CF74496420CEEF6400A9D062 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		CF74496620CEF9C500A9D062 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CF74496C20CF1A0300A9D062 /* homeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
 		CF74496E20CF1ECA00A9D062 /* homeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeCollectionCell.swift; sourceTree = "<group>"; };
 		CF8570C020C98F2B0048BCD8 /* POC-BCT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "POC-BCT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,8 +159,7 @@
 		CF74496820CF11F200A9D062 /* Login and Signup */ = {
 			isa = PBXGroup;
 			children = (
-				CF74496420CEEF6400A9D062 /* SignInViewController.swift */,
-				CF74496620CEF9C500A9D062 /* SignUpViewController.swift */,
+				CFAFBAC620DC497E001A4C98 /* loginViewController.swift */,
 			);
 			path = "Login and Signup";
 			sourceTree = "<group>";
@@ -236,7 +231,6 @@
 				CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */,
 				CF62F7B020D03440005281BF /* global.swift */,
 				CFAFBAC020DC48A0001A4C98 /* AMInputView */,
-				CFAFBAC620DC497E001A4C98 /* loginViewController.swift */,
 				CFA5C1A420D18FEA0002FFF3 /* General Pool */,
 				CF74497020CF24E600A9D062 /* Home */,
 				CF74496820CF11F200A9D062 /* Login and Signup */,
@@ -522,13 +516,11 @@
 			files = (
 				CF8570CC20C98F2B0048BCD8 /* POC_BCT.xcdatamodeld in Sources */,
 				CFA5C1A620D1900F0002FFF3 /* AssetCreateTableViewController.swift in Sources */,
-				CF74496720CEF9C500A9D062 /* SignUpViewController.swift in Sources */,
 				CF62F7B320D0394A005281BF /* ProjectCreateTableViewController.swift in Sources */,
 				CF62F7B120D03440005281BF /* global.swift in Sources */,
 				CFA5C1A320D184080002FFF3 /* PoolViewController.swift in Sources */,
 				CF8570FB20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift in Sources */,
 				CF74496D20CF1A0300A9D062 /* homeViewController.swift in Sources */,
-				CF74496520CEEF6400A9D062 /* SignInViewController.swift in Sources */,
 				CF8570C620C98F2B0048BCD8 /* ProjectViewController.swift in Sources */,
 				CF74496F20CF1ECA00A9D062 /* homeCollectionCell.swift in Sources */,
 				CFAFBAC320DC48A0001A4C98 /* AMInputView.swift in Sources */,
