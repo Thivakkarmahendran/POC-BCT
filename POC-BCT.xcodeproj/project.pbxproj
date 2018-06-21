@@ -32,6 +32,10 @@
 		CF8570FB20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570FA20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift */; };
 		CFA5C1A320D184080002FFF3 /* PoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C1A220D184080002FFF3 /* PoolViewController.swift */; };
 		CFA5C1A620D1900F0002FFF3 /* AssetCreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C1A520D1900F0002FFF3 /* AssetCreateTableViewController.swift */; };
+		CFAFBAC320DC48A0001A4C98 /* AMInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAFBAC120DC48A0001A4C98 /* AMInputView.swift */; };
+		CFAFBAC420DC48A0001A4C98 /* AMInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFAFBAC220DC48A0001A4C98 /* AMInputView.xib */; };
+		CFAFBAC720DC497E001A4C98 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAFBAC620DC497E001A4C98 /* loginViewController.swift */; };
+		CFAFBAC920DC4AF3001A4C98 /* bctLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFAFBAC820DC4AF3001A4C98 /* bctLogo.jpg */; };
 		ED0C1935994D5CDB8BF56810 /* Pods_POC_BCTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 707B5C0DC717BA7EA7C35F01 /* Pods_POC_BCTUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +90,10 @@
 		CF8570FA20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailTableViewController.swift; sourceTree = "<group>"; };
 		CFA5C1A220D184080002FFF3 /* PoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolViewController.swift; sourceTree = "<group>"; };
 		CFA5C1A520D1900F0002FFF3 /* AssetCreateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCreateTableViewController.swift; sourceTree = "<group>"; };
+		CFAFBAC120DC48A0001A4C98 /* AMInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMInputView.swift; sourceTree = "<group>"; };
+		CFAFBAC220DC48A0001A4C98 /* AMInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMInputView.xib; sourceTree = "<group>"; };
+		CFAFBAC620DC497E001A4C98 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		CFAFBAC820DC4AF3001A4C98 /* bctLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bctLogo.jpg; sourceTree = "<group>"; };
 		D91ED1C95BC765FC66CFCE3B /* Pods-POC-BCT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCT/Pods-POC-BCT.debug.xcconfig"; sourceTree = "<group>"; };
 		E0BCA491E4F985491E6F106A /* Pods-POC-BCTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC-BCTTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-POC-BCTTests/Pods-POC-BCTTests.release.xcconfig"; sourceTree = "<group>"; };
 		F3B322F9F648E2879BB46198 /* Pods_POC_BCT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POC_BCT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				CF50016E20D2F0C900084AB4 /* 1.png */,
+				CFAFBAC820DC4AF3001A4C98 /* bctLogo.jpg */,
 				CF50017020D2F0D100084AB4 /* 2.png */,
 			);
 			path = Pictures;
@@ -226,6 +235,8 @@
 			children = (
 				CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */,
 				CF62F7B020D03440005281BF /* global.swift */,
+				CFAFBAC020DC48A0001A4C98 /* AMInputView */,
+				CFAFBAC620DC497E001A4C98 /* loginViewController.swift */,
 				CFA5C1A420D18FEA0002FFF3 /* General Pool */,
 				CF74497020CF24E600A9D062 /* Home */,
 				CF74496820CF11F200A9D062 /* Login and Signup */,
@@ -263,6 +274,15 @@
 				CFA5C1A220D184080002FFF3 /* PoolViewController.swift */,
 			);
 			path = "General Pool";
+			sourceTree = "<group>";
+		};
+		CFAFBAC020DC48A0001A4C98 /* AMInputView */ = {
+			isa = PBXGroup;
+			children = (
+				CFAFBAC120DC48A0001A4C98 /* AMInputView.swift */,
+				CFAFBAC220DC48A0001A4C98 /* AMInputView.xib */,
+			);
+			path = AMInputView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,8 +397,10 @@
 				CF8570F520C98FE70048BCD8 /* GoogleService-Info.plist in Resources */,
 				CF50016F20D2F0CA00084AB4 /* 1.png in Resources */,
 				CF8570CE20C98F2C0048BCD8 /* Assets.xcassets in Resources */,
+				CFAFBAC920DC4AF3001A4C98 /* bctLogo.jpg in Resources */,
 				CF50017120D2F0D100084AB4 /* 2.png in Resources */,
 				CF8570C920C98F2B0048BCD8 /* Main.storyboard in Resources */,
+				CFAFBAC420DC48A0001A4C98 /* AMInputView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,8 +531,10 @@
 				CF74496520CEEF6400A9D062 /* SignInViewController.swift in Sources */,
 				CF8570C620C98F2B0048BCD8 /* ProjectViewController.swift in Sources */,
 				CF74496F20CF1ECA00A9D062 /* homeCollectionCell.swift in Sources */,
+				CFAFBAC320DC48A0001A4C98 /* AMInputView.swift in Sources */,
 				CF8570C420C98F2B0048BCD8 /* AppDelegate.swift in Sources */,
 				CF8570F920C9BCF60048BCD8 /* AssetViewController.swift in Sources */,
+				CFAFBAC720DC497E001A4C98 /* loginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
