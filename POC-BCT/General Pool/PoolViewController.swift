@@ -56,7 +56,7 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         getLocationList()
     }
-    
+    //////
     
     
     func getLocationList(){
@@ -91,8 +91,50 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             LocAssetArray.append(LocAsset(sectionName: cat as! String, sectionObjects: temp))
         }
+        getSkillList()
+    }
+    ////
+    
+   
+    func getSkillList(){
+        ref = Database.database().reference()
+        ref.child("Skills").observeSingleEvent(of: .value, with: { (snapshot) in
+            skillList = snapshot.value as! NSDictionary
+            self.sortSkills()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    struct skillAsset {
+        var sectionName : String!
+        var sectionObjects : [String]!
+    }
+    var SkillsetArray = [skillAsset]()
+    
+    
+    func sortSkills(){
+        let catlist = skillList.allKeys
+        for cat in catlist {
+            let UserList = skillList.value(forKey: cat as! String) as! NSDictionary
+            var temp: Array<String> = []
+            for user in UserList.allKeys {
+                
+                let id = UserList.value(forKey: user as! String) as! String
+                let index = poolIDArray.index(of: id)
+                temp.append(poolNameArray[index!])
+                
+                // temp.append(UserList.value(forKey: user as! String) as! String)
+            }
+            SkillsetArray.append(skillAsset(sectionName: cat as! String, sectionObjects: temp))
+        }
         tableView.reloadData()
     }
+    
+    
+    
+    
+    
     ////////////////////////////////////////////
     
     @IBAction func SegmentChange(_ sender: Any) {
@@ -101,6 +143,8 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 segmentChoice = 0;
             case 1:
                 segmentChoice = 1;
+            case 2:
+                segmentChoice = 2;
             default:
                 break
         }
@@ -113,8 +157,11 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if(segmentChoice == 0){
             return 1
         }
-        else{
+        else if(segmentChoice == 1){
             return LocAssetArray.count
+        }
+        else{
+             return SkillsetArray.count
         }
     }
     
@@ -123,9 +170,17 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if(segmentChoice == 0){
            return poolNameArray.count
         }
-        else{
+        else if(segmentChoice == 1){
             if(LocAssetArray.count != 0){
                 return LocAssetArray[section].sectionObjects.count
+            }
+            else{
+                return 0
+            }
+        }
+        else{
+            if(SkillsetArray.count != 0){
+                return SkillsetArray[section].sectionObjects.count
             }
             else{
                 return 0
@@ -140,9 +195,14 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.textLabel?.text = (poolNameArray[indexPath.row])
             return cell
         }
-        else{
+        else if(segmentChoice == 1){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
             cell.textLabel?.text =  LocAssetArray[indexPath.section].sectionObjects[indexPath.row]
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
+            cell.textLabel?.text =  SkillsetArray[indexPath.section].sectionObjects[indexPath.row]
             return cell
         }
     }
@@ -151,31 +211,16 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if(segmentChoice == 0){
             return ""
         }
-        else{
+        else if(segmentChoice == 1){
              return LocAssetArray[section].sectionName
+        }
+        else{
+            return SkillsetArray[section].sectionName
         }
     }
     
     
-    
-    
-    /*
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return poolNameArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
-        cell.textLabel?.text = (poolNameArray[indexPath.row])
-        return cell
-    }
-  */
-    
-    
     ///////////////////////////////////////////////////////////////////////////////////////////
-    
-    
-    
     
     
     

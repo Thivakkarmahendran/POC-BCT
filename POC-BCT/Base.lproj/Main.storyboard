@@ -980,6 +980,7 @@
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Location"/>
+                                    <segment title="Skills"/>
                                 </segments>
                                 <connections>
                                     <action selector="SegmentChange:" destination="jEd-zL-nUk" eventType="valueChanged" id="f8x-xe-Ucn"/>
