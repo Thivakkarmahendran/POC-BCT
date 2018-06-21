@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 
-class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var segmentControl: UISegmentedControl!
@@ -85,8 +85,9 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
               
             let id = UserList.value(forKey: user as! String) as! String
             let index = poolIDArray.index(of: id)
-            temp.append(poolNameArray[index!])
- 
+            if(index != nil){
+                 temp.append(poolNameArray[index!])
+            }
             // temp.append(UserList.value(forKey: user as! String) as! String)
             }
             LocAssetArray.append(LocAsset(sectionName: cat as! String, sectionObjects: temp))
@@ -122,7 +123,9 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 let id = UserList.value(forKey: user as! String) as! String
                 let index = poolIDArray.index(of: id)
-                temp.append(poolNameArray[index!])
+                if(index != nil){
+                    temp.append(poolNameArray[index!])
+                }
                 
                 // temp.append(UserList.value(forKey: user as! String) as! String)
             }
@@ -149,6 +152,11 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 break
         }
         tableView.reloadData()
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
+        self.present(loginVC, animated: true, completion: nil)
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -222,35 +230,6 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     ///////////////////////////////////////////////////////////////////////////////////////////
     
-    
-    
-    
-   
-    ///////////// PICKER
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return projArray.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return projArray[row] as! String
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        typeValue = projArray[row] as! String
-    }
-   
-    ////////////
- 
- 
-    
-    @IBAction func backButton(_ sender: Any) {
-        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-        self.present(loginVC, animated: true, completion: nil)
-    }
+  
     
 }

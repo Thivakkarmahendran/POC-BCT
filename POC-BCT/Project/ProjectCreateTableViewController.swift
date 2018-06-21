@@ -15,7 +15,9 @@ class ProjectCreateTableViewController: UITableViewController {
     @IBOutlet var NameTextField: UITextField!
     @IBOutlet var ProjectIDTextField: UITextField!
     @IBOutlet var costTextField: UITextField!
-    @IBOutlet var ValueTextField: UITextField!
+    @IBOutlet var skillsTextField: UITextField!
+    @IBOutlet var startDate: UIDatePicker!
+    @IBOutlet var endDate: UIDatePicker!
     
      var ref1: DatabaseReference!
     
@@ -31,12 +33,15 @@ class ProjectCreateTableViewController: UITableViewController {
     }
     
     @IBAction func CreateButton(_ sender: Any) {
-        if((NameTextField.text != "") && (ProjectIDTextField.text != "") && (costTextField.text != "") && (ValueTextField.text != "")){
+        if((NameTextField.text != "") && (ProjectIDTextField.text != "") && (costTextField.text != "") && (skillsTextField.text != "")){
           
-            let data = ["Project ID": ProjectIDTextField.text, "Cost when idle": costTextField.text, "Value when Active":ValueTextField.text]
-            let ref = Database.database().reference().child("Projects").child(NameTextField.text!).setValue(data)
             
-            getListofProj(proj: NameTextField.text!)
+            let data = ["Name": NameTextField.text, "Budget": costTextField.text, "Skills": skillsTextField.text, "Start Date": Int(startDate.date.timeIntervalSince1970), "End Date": Int(startDate.date.timeIntervalSince1970)] as [String : Any]
+            
+            let ref = Database.database().reference().child("Projects").child(ProjectIDTextField.text!).setValue(data)
+            
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
+            self.present(loginVC, animated: true, completion: nil)
         }
         else{
             let alert = UIAlertController(title: "Error", message: "A text field is empty", preferredStyle: UIAlertControllerStyle.alert)
@@ -51,41 +56,7 @@ class ProjectCreateTableViewController: UITableViewController {
         self.present(loginVC, animated: true, completion: nil)
     }
     
-    func getListofProj(proj: String){
-        var assetArrayProj: Array<Any> = []
-        var eventsDictionary: NSDictionary = NSDictionary()
-        
-        ref1 = Database.database().reference().child("Users").child(UserID)
-        ref1.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let eventDict = snapshot.value as?  [String:Any] {
-                eventsDictionary = eventDict as NSDictionary
-                let temp = eventsDictionary.value(forKey: "Projects")
-                
-                
-                if(temp != nil){
-                    assetArrayProj = temp as! Array<Any>
-                }
-                assetArrayProj.append(proj)
-                
-                
-                let ref = Database.database().reference().child("Users").child(UserID).child("Projects").setValue(assetArrayProj)
-                
-             
-                
-                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-                self.present(loginVC, animated: true, completion: nil)
-            }
-            else{
-                assetArrayProj.append(proj)
-                let ref = Database.database().reference().child("Users").child(UserID).child("Projects").setValue(assetArrayProj)
-                
-                
-                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-                self.present(loginVC, animated: true, completion: nil)
-            }
-        })
-    }
-    
+   
     
 }
 
