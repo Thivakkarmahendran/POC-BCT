@@ -16,10 +16,30 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "loadProjectList"), object: nil)
-        getProjectList(Loc: "Projectview")
+        // NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "loadProjectList"), object: nil)
+        //getProjectList(Loc: "Projectview")
+        
+        getProjectList()
     }
     
+    //Gets the project lists from the server
+    func getProjectList(){
+        ref = Database.database().reference()
+        ref.child("Users").child(UserID).observeSingleEvent(of: .value, with: { (snapshot) in
+            let temp = snapshot.value as! NSDictionary
+            print(temp)
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    
+    /////////////////
+    /*
     @objc func loadList(){
         if(projArray.count == 0){
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
@@ -29,6 +49,7 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
             self.ProjectTableView.reloadData()
         }
     }
+ */
     
     //////Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
