@@ -24,10 +24,13 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
     func getUserProjectList(){
         ref = Database.database().reference()
         ref.child("Users").child(UserID).observeSingleEvent(of: .value, with: { (snapshot) in
-           let temp = snapshot.value as! NSDictionary
-           let temp1 = temp.value(forKey: "Projects") as! NSDictionary
-            userProjList =  temp1.allValues as! Array<String>
-           self.getProjectList()
+            
+                //print(snapshot.value!)
+                let temp = snapshot.value as! NSDictionary
+                let temp1 = temp.value(forKey: "Projects") as! NSDictionary
+                userProjList =  temp1.allValues as! Array<String>
+                self.getProjectList()
+            
         }) { (error) in
             print(error.localizedDescription)
         }

@@ -44,7 +44,7 @@ class AssetCreateTableViewController: UITableViewController {
             let ref1 = Database.database().reference().child("Location").child(locationTextField.text!).childByAutoId().setValue(assetIDTextField.text!)
             let ref2 = Database.database().reference().child("Skills").child(skillsTextField.text!).childByAutoId().setValue(assetIDTextField.text!)
             
-            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home1") as! homeTabController
             self.present(loginVC, animated: true, completion: nil)
         }
         else{

@@ -13,8 +13,6 @@
 		CF50017120D2F0D100084AB4 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF50017020D2F0D100084AB4 /* 2.png */; };
 		CF62F7B120D03440005281BF /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62F7B020D03440005281BF /* global.swift */; };
 		CF62F7B320D0394A005281BF /* ProjectCreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62F7B220D0394A005281BF /* ProjectCreateTableViewController.swift */; };
-		CF74496D20CF1A0300A9D062 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74496C20CF1A0300A9D062 /* homeViewController.swift */; };
-		CF74496F20CF1ECA00A9D062 /* homeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF74496E20CF1ECA00A9D062 /* homeCollectionCell.swift */; };
 		CF8570C420C98F2B0048BCD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */; };
 		CF8570C620C98F2B0048BCD8 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570C520C98F2B0048BCD8 /* ProjectViewController.swift */; };
 		CF8570C920C98F2B0048BCD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8570C720C98F2B0048BCD8 /* Main.storyboard */; };
@@ -66,8 +64,6 @@
 		CF50017020D2F0D100084AB4 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		CF62F7B020D03440005281BF /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		CF62F7B220D0394A005281BF /* ProjectCreateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreateTableViewController.swift; sourceTree = "<group>"; };
-		CF74496C20CF1A0300A9D062 /* homeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
-		CF74496E20CF1ECA00A9D062 /* homeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeCollectionCell.swift; sourceTree = "<group>"; };
 		CF8570C020C98F2B0048BCD8 /* POC-BCT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "POC-BCT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF8570C520C98F2B0048BCD8 /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
@@ -199,8 +195,7 @@
 		CF74497020CF24E600A9D062 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				CF74496C20CF1A0300A9D062 /* homeViewController.swift */,
-				CF74496E20CF1ECA00A9D062 /* homeCollectionCell.swift */,
+				CFAFBACA20DC5856001A4C98 /* homeTabController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -232,7 +227,6 @@
 			children = (
 				CF8570C320C98F2B0048BCD8 /* AppDelegate.swift */,
 				CF62F7B020D03440005281BF /* global.swift */,
-				CFAFBACA20DC5856001A4C98 /* homeTabController.swift */,
 				CFAFBAC020DC48A0001A4C98 /* AMInputView */,
 				CFA5C1A420D18FEA0002FFF3 /* General Pool */,
 				CF74497020CF24E600A9D062 /* Home */,
@@ -524,9 +518,7 @@
 				CFAFBACB20DC5856001A4C98 /* homeTabController.swift in Sources */,
 				CFA5C1A320D184080002FFF3 /* PoolViewController.swift in Sources */,
 				CF8570FB20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift in Sources */,
-				CF74496D20CF1A0300A9D062 /* homeViewController.swift in Sources */,
 				CF8570C620C98F2B0048BCD8 /* ProjectViewController.swift in Sources */,
-				CF74496F20CF1ECA00A9D062 /* homeCollectionCell.swift in Sources */,
 				CFAFBAC320DC48A0001A4C98 /* AMInputView.swift in Sources */,
 				CF8570C420C98F2B0048BCD8 /* AppDelegate.swift in Sources */,
 				CF8570F920C9BCF60048BCD8 /* AssetViewController.swift in Sources */,
