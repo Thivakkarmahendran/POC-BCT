@@ -17,10 +17,8 @@ var skillList: NSDictionary = [:]
 var UserID = ""
 var userProjList: Array<String> = []
 var ProjList: NSDictionary = [:]
-
-
-
 var CurrentProj = ""
+
 var projArray: Array<Any> = []
 var ref: DatabaseReference!
 

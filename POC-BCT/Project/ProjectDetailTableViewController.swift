@@ -12,16 +12,19 @@ import Firebase
 
 class ProjectDetailTableViewController: UITableViewController {
     
-    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var titleNavItem: UINavigationItem!
     @IBOutlet var idLabel: UILabel!
-    @IBOutlet var costLabel: UILabel!
-    @IBOutlet var valueLabel: UILabel!
+    @IBOutlet var budgetLabel: UILabel!
+    @IBOutlet var skillsLabel: UILabel!
+    @IBOutlet var startDateLabel: UILabel!
+    @IBOutlet var endDateLabel: UILabel!
     
+    var cProject: NSDictionary = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = CurrentProj
-        getProjInfo()
+        cProject = ProjList.value(forKey: CurrentProj) as! NSDictionary
+        updateProjectInfo()
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,43 +32,36 @@ class ProjectDetailTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func getProjInfo(){
-        
-        var eventsDictionary: NSDictionary = NSDictionary()
-        
-        ref = Database.database().reference().child("Projects").child(CurrentProj)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let eventDict = snapshot.value as?  [String:Any] {
-                eventsDictionary = eventDict as NSDictionary
-                
-                self.titleLabel.text = CurrentProj
-                
-                let temp = eventsDictionary.value(forKey: "Project ID")
-                if(temp != nil){
-                    self.idLabel.text = "\(temp!)"
-                }
-                
-                let temp1 = eventsDictionary.value(forKey: "Cost when idle")
-                if(temp1 != nil){
-                    self.costLabel.text = "$ \(temp1!)"
-                }
-                
-                let temp2 = eventsDictionary.value(forKey: "Value when Active")
-                if(temp2 != nil){
-                    self.valueLabel.text = "$ \(temp2!)"
-                }
-                
-                
-            }
-        })
-        
-    }
-    
     @IBAction func doneButton(_ sender: Any) {
-        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "project") as! ProjectViewController
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home1") as! homeTabController
         self.present(loginVC, animated: true, completion: nil)
     }
     
+    
+    
+    
+    func updateProjectInfo(){
+        titleNavItem.title = cProject.value(forKey: "Name") as! String
+        idLabel.text = CurrentProj
+        budgetLabel.text = "\(cProject.value(forKey: "Budget")!)"
+        skillsLabel.text = "\(cProject.value(forKey: "Skills")!)"
+        
+        let start = cProject.value(forKey: "Start Date")!
+        let end = cProject.value(forKey: "End Date")!
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        
+        let sdate = Date(timeIntervalSince1970: start as! TimeInterval)
+        let edate = Date(timeIntervalSince1970: end as! TimeInterval)
+        
+        startDateLabel.text = dateFormatter.string(from: sdate)
+        endDateLabel.text = dateFormatter.string(from: edate)
+        
+        
+    }
     
     
 }

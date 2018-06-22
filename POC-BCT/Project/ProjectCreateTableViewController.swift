@@ -37,7 +37,7 @@ class ProjectCreateTableViewController: UITableViewController {
         if((NameTextField.text != "") && (ProjectIDTextField.text != "") && (costTextField.text != "") && (skillsTextField.text != "")){
             
             
-            let data = ["Name": NameTextField.text, "Budget": Int(costTextField.text!), "Skills": skillsTextField.text, "Start Date": Int(startDate.date.timeIntervalSince1970), "End Date": Int(startDate.date.timeIntervalSince1970)] as [String : Any]
+            let data = ["Name": NameTextField.text, "Budget": Int(costTextField.text!), "Skills": skillsTextField.text, "Start Date": Int(startDate.date.timeIntervalSince1970), "End Date": Int(endDate.date.timeIntervalSince1970)] as [String : Any]
             
             let ref = Database.database().reference().child("Projects").child(ProjectIDTextField.text!).setValue(data)
             let ref1 = Database.database().reference().child("Users").child(UserID).child("Projects").childByAutoId().setValue(ProjectIDTextField.text!)

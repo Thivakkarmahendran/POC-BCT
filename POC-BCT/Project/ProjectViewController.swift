@@ -72,6 +72,12 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        CurrentProj = projIDArray[indexPath.row]
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProjDetails") as! ProjectDetailTableViewController
+        self.present(loginVC, animated: true, completion: nil)
+    }
+    
     
     
 }
