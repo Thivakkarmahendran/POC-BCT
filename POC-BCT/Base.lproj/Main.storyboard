@@ -67,7 +67,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Projects" id="yH3-0S-Wv9"/>
+                    <tabBarItem key="tabBarItem" title="Projects" image="Projects" id="yH3-0S-Wv9"/>
                     <connections>
                         <outlet property="ProjectTableView" destination="R7W-WX-i1H" id="jN1-9V-I3w"/>
                     </connections>
@@ -823,7 +823,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F5A-vb-aTT"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Assets" id="QZn-uY-RBr"/>
+                    <tabBarItem key="tabBarItem" title="Assets" image="Assets" id="QZn-uY-RBr"/>
                     <connections>
                         <outlet property="segmentControl" destination="Z6J-mH-TW9" id="O6X-HP-NtO"/>
                         <outlet property="tableView" destination="wQe-3M-nDN" id="GDV-kw-pf9"/>
@@ -833,10 +833,10 @@
             </objects>
             <point key="canvasLocation" x="584.79999999999995" y="850.52473763118451"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Not in USE-->
         <scene sceneID="9qf-zl-Y27">
             <objects>
-                <viewController storyboardIdentifier="home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Tfg-JS-Q2P" customClass="homeViewController" customModule="POC_BCT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" title="Not in USE" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Tfg-JS-Q2P" customClass="homeViewController" customModule="POC_BCT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n5n-0Z-2mH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -912,7 +912,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ou6-he-kOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3465" y="140"/>
+            <point key="canvasLocation" x="1788" y="894"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Xii-3P-9Bo">
@@ -1178,6 +1178,8 @@
     </scenes>
     <resources>
         <image name="1.png" width="512" height="512"/>
+        <image name="Assets" width="30" height="30"/>
+        <image name="Projects" width="30" height="30"/>
         <image name="backImage" width="1000" height="548"/>
         <image name="bctLogo.jpg" width="3065" height="3657"/>
     </resources>
