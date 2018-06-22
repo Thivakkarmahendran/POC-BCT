@@ -10,7 +10,10 @@ import Foundation
 import UIKit
 import Firebase
 
-class ProjectDetailTableViewController: UITableViewController {
+class ProjectDetailTableViewController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    
+    
     
     @IBOutlet var titleNavItem: UINavigationItem!
     @IBOutlet var idLabel: UILabel!
@@ -38,8 +41,6 @@ class ProjectDetailTableViewController: UITableViewController {
     }
     
     
-    
-    
     func updateProjectInfo(){
         titleNavItem.title = cProject.value(forKey: "Name") as! String
         idLabel.text = CurrentProj
@@ -60,6 +61,26 @@ class ProjectDetailTableViewController: UITableViewController {
         startDateLabel.text = dateFormatter.string(from: sdate)
         endDateLabel.text = dateFormatter.string(from: edate)
         
+    }
+    
+    ///////
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! projectDetailCollectionCell
+        
+       // cell.image.layer.cornerRadius = cell.image.frame.size.width / 2
+       // cell.image.clipsToBounds = true
+        
+         cell.image.layer.masksToBounds = false;
+         cell.image.layer.cornerRadius = 8;
+         cell.image.layer.shadowOffset = CGSize(width: 5, height: 5)
+         cell.image.layer.shadowRadius = 5;
+         cell.image.layer.shadowOpacity = 0.5;
+        
+        return cell
         
     }
     
