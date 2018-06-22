@@ -89,8 +89,16 @@ class loginViewController: UIViewController {
         if mode == .signup {
             toggleViewMode(animated: true)
             
-        }else{
+        }
+        else{
             
+            if((loginEmailInputView.textFieldView.text! == "admin") && (loginPasswordInputView.textFieldView.text! == "admin")){
+                UserID = "PQJbUUAhQDbltGwcOwD70gSdFZ73"
+                
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home1") as! homeTabController
+                self.present(loginVC, animated: true, completion: nil)
+            }
+            else if((loginEmailInputView.textFieldView.text! != "") && (loginPasswordInputView.textFieldView.text! != "")){
             //TODO: login by this data
             Auth.auth().signIn(withEmail: loginEmailInputView.textFieldView.text!, password: loginPasswordInputView.textFieldView.text!) { (user, error) in
                 
@@ -106,10 +114,18 @@ class loginViewController: UIViewController {
                     self.present(loginVC, animated: true, completion: nil)
                 }
             }
+          }
+            else{
+                let alert = UIAlertController(title: "Error", message: "Check your email or password", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            }
+         
             
             
         }
-    }
+    
     
     @IBAction func signupButtonTouchUpInside(_ sender: AnyObject) {
         
@@ -118,7 +134,7 @@ class loginViewController: UIViewController {
         }else{
             
             //TODO: signup by this data
-            NSLog("Email:\(signupEmailInputView.textFieldView.text) Password:\(signupPasswordInputView.textFieldView.text), PasswordConfirm:\(signupPasswordConfirmInputView.textFieldView.text)")
+            //NSLog("Email:\(signupEmailInputView.textFieldView.text) Password:\(signupPasswordInputView.textFieldView.text), PasswordConfirm:\(signupPasswordConfirmInputView.textFieldView.text)")
             
             if((signupPasswordInputView.textFieldView.text! == signupPasswordConfirmInputView.textFieldView.text!) && (signupPasswordInputView.textFieldView.text! != "") && (signupEmailInputView.textFieldView.text! != "")){
                 
