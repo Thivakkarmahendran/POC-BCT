@@ -1089,7 +1089,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2B-lo-gBd" userLabel="View - logo">
                                         <rect key="frame" x="135" y="50" width="60" height="60"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bctLogo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JxW-9v-PO2">
+                                            <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bctLogo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JxW-9v-PO2">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                             </imageView>
                                         </subviews>
