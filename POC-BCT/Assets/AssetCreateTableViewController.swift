@@ -33,9 +33,9 @@ class AssetCreateTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+   
     
-    @IBAction func CreateButton(_ sender: Any) {
-        
+    @IBAction func saveButton(_ sender: Any) {
         if((nameTextField.text != "") && (assetIDTextField.text != "") && (locationTextField.text != "") && (skillsTextField.text != "") && (salaryTextField.text != "")){
             
             let data = ["Name": nameTextField.text, "Location":locationTextField.text, "skills":skillsTextField.text, "salary": Int(salaryTextField.text!), "bench": true] as [String : Any]
@@ -55,48 +55,14 @@ class AssetCreateTableViewController: UITableViewController {
         
     }
     
-    
-    
-    @IBAction func CancelButton(_ sender: Any) {
-        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
+    @IBAction func cancelButton(_ sender: Any) {
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home1") as! homeTabController
         self.present(loginVC, animated: true, completion: nil)
     }
     
+    
+    
+    
 
-    /*
-    func SavetoPool(asset: String){
-        var assetArrayPool: Array<Any> = []
-        var eventsDictionary: NSDictionary = NSDictionary()
-        
-        ref1 = Database.database().reference()
-        ref1.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let eventDict = snapshot.value as?  [String:Any] {
-                eventsDictionary = eventDict as NSDictionary
-                let temp = eventsDictionary.value(forKey: "Pool")
-                
-                if(temp != nil){
-                    assetArrayPool = temp as! Array<Any>
-                }
-                assetArrayPool.append(asset)
-                
-                
-                let ref = Database.database().reference().child("Pool").setValue(assetArrayPool)
-                
-                
-                
-                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-                self.present(loginVC, animated: true, completion: nil)
-            }
-            else{
-                assetArrayPool.append(asset)
-                let ref = Database.database().reference().child("Pool").setValue(assetArrayPool)
-                
-                
-                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! homeViewController
-                self.present(loginVC, animated: true, completion: nil)
-            }
-        })
-    }
-    */
     
 }
