@@ -25,6 +25,8 @@ var userProjAssetIDList: Array<String> = []
 
 var CurrentProjectAssetArray: Array<String> = []
 
+var cProject: NSDictionary = [:]
+
 
 var ref: DatabaseReference!
 class global: UIViewController{

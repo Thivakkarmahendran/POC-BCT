@@ -22,7 +22,7 @@ class ProjectDetailTableViewController: UITableViewController, UICollectionViewD
     @IBOutlet var startDateLabel: UILabel!
     @IBOutlet var endDateLabel: UILabel!
     
-    var cProject: NSDictionary = [:]
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +77,6 @@ class ProjectDetailTableViewController: UITableViewController, UICollectionViewD
                 CurrentProjectAssetArray.append(asset.value(forKey: "Name") as! String)
             }
         }
-        
     }
     
     ///////

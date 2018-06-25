@@ -14,6 +14,7 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
     
     @IBOutlet var assetPoolTableView: UITableView!
     @IBOutlet var segmentControl: UISegmentedControl!
+    @IBOutlet var collectionView: UICollectionView!
     
     var poolIDArray: Array<String> = []
     var poolNameArray: Array<String> = []
@@ -21,6 +22,32 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getProjectList()
+    }
+    
+    //Gets the project lists from the server
+    func getProjectList(){
+        ref = Database.database().reference()
+        ref.child("Projects").observeSingleEvent(of: .value, with: { (snapshot) in
+            ProjList = snapshot.value as! NSDictionary
+            self.getAssetList1()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func getAssetList1(){
+          cProject = ProjList.value(forKey: CurrentProj) as! NSDictionary
+        CurrentProjectAssetArray.removeAll()
+        if(cProject.value(forKey: "Assets") != nil){
+            let list = cProject.value(forKey: "Assets") as! NSDictionary
+            userProjAssetIDList = list.allValues as! Array<String>
+            let idlist = userProjAssetIDList
+            for id in idlist {
+                let asset = assetList.value(forKey: id as! String) as! NSDictionary
+                CurrentProjectAssetArray.append(asset.value(forKey: "Name") as! String)
+            }
+        }
         getAssetList()
     }
     
@@ -37,6 +64,9 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
     
     // gets the list of benches assets from the assetList array
     func getBenched(){
+        poolIDArray.removeAll()
+        poolNameArray.removeAll()
+        
         let idlist = assetList.allKeys
         for id in idlist {
             let asset = assetList.value(forKey: id as! String) as! NSDictionary
@@ -44,9 +74,6 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
             if(asset.value(forKey: "bench") as! Int == 1){
                 poolIDArray.append(id as! String)
                 poolNameArray.append(asset.value(forKey: "Name") as! String)
-            }
-            else{
-                print("busy")
             }
         }
         getLocationList()
@@ -72,6 +99,7 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
     
     
     func sortLocations(){
+        LocAssetArray.removeAll()
         let catlist = locationList.allKeys
         for cat in catlist {
             let UserList = locationList.value(forKey: cat as! String) as! NSDictionary
@@ -108,8 +136,8 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
     }
     var SkillsetArray = [skillAsset]()
     
-    
     func sortSkills(){
+        SkillsetArray.removeAll()
         let catlist = skillList.allKeys
         for cat in catlist {
             let UserList = skillList.value(forKey: cat as! String) as! NSDictionary
@@ -126,7 +154,22 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
             }
             SkillsetArray.append(skillAsset(sectionName: cat as! String, sectionObjects: temp))
         }
+        
         assetPoolTableView.reloadData()
+        collectionView.reloadData()
+        print(CurrentProjectAssetArray)
+        print("here")
+        
+    }
+    
+   
+    
+    ///////////////////////
+    
+    func addAssettoProject(assetID: String){
+        let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Assets").childByAutoId().setValue(assetID)
+        let ref1 = Database.database().reference().child("Assets").child(assetID).child("bench").setValue(false)
+          getProjectList()
     }
     
     
@@ -215,6 +258,34 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
         }
     }
     
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+     func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        let add = UITableViewRowAction(style: .normal, title: "Add") { action, index in
+            if(self.segmentChoice == 0){
+                self.addAssettoProject(assetID: self.poolIDArray[index.row])
+            }
+            else if(self.segmentChoice == 1){
+                let temp =  self.LocAssetArray[index.section].sectionObjects[index.row]
+                let temp1 = self.poolNameArray.index(of: temp)
+                
+                self.addAssettoProject(assetID: self.poolIDArray[temp1!])
+                
+            }
+            else{
+                let temp =  self.SkillsetArray[index.section].sectionObjects[index.row]
+                let temp1 = self.poolNameArray.index(of: temp)
+                self.addAssettoProject(assetID: self.poolIDArray[temp1!])
+            }
+        }
+        add.backgroundColor = .blue
+        return [add]
+    }
+    
+    
     ///////
     @IBAction func segmentControl(_ sender: Any) {
         switch segmentControl.selectedSegmentIndex {
@@ -230,9 +301,6 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
         assetPoolTableView.reloadData()
         
     }
-    
-    
-    
     
 
 }

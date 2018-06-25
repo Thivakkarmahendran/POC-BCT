@@ -244,6 +244,7 @@
                     </view>
                     <connections>
                         <outlet property="assetPoolTableView" destination="wfq-Kf-s0U" id="Bmv-Yi-Hun"/>
+                        <outlet property="collectionView" destination="XFx-9U-LQR" id="dge-tB-sEq"/>
                         <outlet property="segmentControl" destination="DAZ-yX-fkp" id="C3q-g4-rnM"/>
                     </connections>
                 </viewController>
