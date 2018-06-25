@@ -24,6 +24,7 @@ var projArray: Array<Any> = []
 var userProjAssetIDList: Array<String> = []
 
 var CurrentProjectAssetArray: Array<String> = []
+var CurrentProjectAssetIDArray: Array<String> = []
 
 var cProject: NSDictionary = [:]
 

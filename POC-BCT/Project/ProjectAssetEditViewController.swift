@@ -39,6 +39,7 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
     func getAssetList1(){
           cProject = ProjList.value(forKey: CurrentProj) as! NSDictionary
         CurrentProjectAssetArray.removeAll()
+        CurrentProjectAssetIDArray.removeAll()
         if(cProject.value(forKey: "Assets") != nil){
             let list = cProject.value(forKey: "Assets") as! NSDictionary
             userProjAssetIDList = list.allValues as! Array<String>
@@ -46,6 +47,7 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
             for id in idlist {
                 let asset = assetList.value(forKey: id as! String) as! NSDictionary
                 CurrentProjectAssetArray.append(asset.value(forKey: "Name") as! String)
+                CurrentProjectAssetIDArray.append(id)
             }
         }
         getAssetList()
@@ -167,9 +169,15 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
     ///////////////////////
     
     func addAssettoProject(assetID: String){
-        let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Assets").childByAutoId().setValue(assetID)
+        let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Assets").child(assetID).setValue(assetID)
         let ref1 = Database.database().reference().child("Assets").child(assetID).child("bench").setValue(false)
           getProjectList()
+    }
+    
+    func removeAssetfromProject(assetID: String){
+        let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Assets").child(assetID).removeValue()
+        let ref1 = Database.database().reference().child("Assets").child(assetID).child("bench").setValue(true)
+        getProjectList()
     }
     
     
@@ -190,6 +198,10 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
         cell.image.layer.shadowOpacity = 0.5;
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+         removeAssetfromProject(assetID: CurrentProjectAssetIDArray[indexPath.row])
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -284,6 +296,7 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
         add.backgroundColor = .blue
         return [add]
     }
+    
     
     
     ///////
