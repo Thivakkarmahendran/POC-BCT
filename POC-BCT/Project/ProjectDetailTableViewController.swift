@@ -71,9 +71,6 @@ class ProjectDetailTableViewController: UITableViewController, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! projectDetailCollectionCell
         
-       // cell.image.layer.cornerRadius = cell.image.frame.size.width / 2
-       // cell.image.clipsToBounds = true
-        
          cell.image.layer.masksToBounds = false;
          cell.image.layer.cornerRadius = 8;
          cell.image.layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -81,8 +78,5 @@ class ProjectDetailTableViewController: UITableViewController, UICollectionViewD
          cell.image.layer.shadowOpacity = 0.5;
         
         return cell
-        
     }
-    
-    
 }
