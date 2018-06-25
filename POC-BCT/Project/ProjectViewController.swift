@@ -17,8 +17,20 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserProjectList()
+        getAssetList()
     }
+    
+    //Gets the asset lists from the server
+    func getAssetList(){
+        ref = Database.database().reference()
+        ref.child("Assets").observeSingleEvent(of: .value, with: { (snapshot) in
+            assetList = snapshot.value as! NSDictionary
+            self.getUserProjectList()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     
     //Gets the user project lists from the server
     func getUserProjectList(){

@@ -36,9 +36,7 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ref = Database.database().reference()
         ref.child("Assets").observeSingleEvent(of: .value, with: { (snapshot) in
             assetList = snapshot.value as! NSDictionary
-            
             self.getBenched()
-            
         }) { (error) in
             print(error.localizedDescription)
         }

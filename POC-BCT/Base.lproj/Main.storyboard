@@ -358,7 +358,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="21" id="0dM-I9-wGk"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -481,7 +481,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m9f-GX-0cj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-823.20000000000005" y="1510.7946026986508"/>
+            <point key="canvasLocation" x="-823" y="1599"/>
         </scene>
         <!--Create Asset-->
         <scene sceneID="CvH-jg-m6a">
@@ -658,7 +658,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVC-j8-lHv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="537" y="1511"/>
+            <point key="canvasLocation" x="585" y="1599"/>
         </scene>
         <!--Create Project-->
         <scene sceneID="UpX-ik-C6m">
@@ -883,7 +883,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9b-ER-EuV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-135" y="1511"/>
+            <point key="canvasLocation" x="-135" y="1599"/>
         </scene>
         <!--Assets-->
         <scene sceneID="U4W-gV-vgz">
@@ -955,7 +955,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LkL-Ko-hQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="1511"/>
+            <point key="canvasLocation" x="1276" y="1599"/>
         </scene>
         <!--Pool-->
         <scene sceneID="GkT-Zu-cMA">

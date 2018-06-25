@@ -34,26 +34,6 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     
-    /// not called anywhere yet
-    func SendTrans(asset: String, from: String, to: String){
-        let data = ["Asset": asset, "From": from, "To":to]
-    
-        let date = Date()
-        let calender = Calendar.current
-        let components = calender.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
-        
-        let year = components.year
-        let month = components.month
-        let day = components.day
-        let hour = components.hour
-        let minute = components.minute
-        let second = components.second
-        
-        let ref = Database.database().reference().child("Transactions").child(String(year!)).child(String(month!)).child(String(day!)).child(String(hour!)).child(String(minute!)).child(String(second!)).setValue(data)
-        
-    }
-    
-    
     func getAssetList(){
         assetArray.removeAll()
         var eventsDictionary: NSDictionary = NSDictionary()
@@ -160,7 +140,6 @@ class AssetViewController: UIViewController, UITableViewDataSource, UITableViewD
                 print("You selected " + self.typeValue )
                 
                 self.getAssetListofProj(proj: self.typeValue, asset: self.assetArray[indexPath.row] as! String)
-                self.SendTrans(asset: self.assetArray[indexPath.row] as! String, from: CurrentProj, to: self.typeValue)
                 
                 self.assetArray.remove(at: indexPath.row)
                 let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Asset List").setValue(self.assetArray)
