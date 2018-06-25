@@ -23,7 +23,6 @@ class ProjectDetailTableViewController: UITableViewController, UICollectionViewD
     @IBOutlet var endDateLabel: UILabel!
     
     var cProject: NSDictionary = [:]
-     var assetArray: Array<String> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,13 +67,14 @@ class ProjectDetailTableViewController: UITableViewController, UICollectionViewD
     
     
     func getAssetList(){
+        CurrentProjectAssetArray.removeAll()
         if(cProject.value(forKey: "Assets") != nil){
             let list = cProject.value(forKey: "Assets") as! NSDictionary
             userProjAssetIDList = list.allValues as! Array<String>
             let idlist = userProjAssetIDList
             for id in idlist {
                 let asset = assetList.value(forKey: id as! String) as! NSDictionary
-                assetArray.append(asset.value(forKey: "Name") as! String)
+                CurrentProjectAssetArray.append(asset.value(forKey: "Name") as! String)
             }
         }
         
@@ -82,13 +82,13 @@ class ProjectDetailTableViewController: UITableViewController, UICollectionViewD
     
     ///////
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return assetArray.count
+        return CurrentProjectAssetArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! projectDetailCollectionCell
         
-        cell.name.text = assetArray[indexPath.row]
+        cell.name.text = CurrentProjectAssetArray[indexPath.row]
         
          cell.image.layer.masksToBounds = false;
          cell.image.layer.cornerRadius = 8;
@@ -98,4 +98,11 @@ class ProjectDetailTableViewController: UITableViewController, UICollectionViewD
         
         return cell
     }
+    
+    
+    
+    override  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+          print(indexPath.row)
+    }
+    
 }

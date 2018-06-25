@@ -23,6 +23,8 @@ var projArray: Array<Any> = []
 
 var userProjAssetIDList: Array<String> = []
 
+var CurrentProjectAssetArray: Array<String> = []
+
 
 var ref: DatabaseReference!
 class global: UIViewController{

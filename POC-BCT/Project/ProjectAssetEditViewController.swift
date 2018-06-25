@@ -1,8 +1,8 @@
 //
-//  PoolViewController.swift
+//  ProjectAssetEditViewController.swift
 //  POC-BCT
 //
-//  Created by Thivakkar Mahendran on 6/13/18.
+//  Created by Thivakkar Mahendran on 6/25/18.
 //  Copyright © 2018 Thivakkar Mahendran. All rights reserved.
 //
 
@@ -10,27 +10,20 @@ import Foundation
 import UIKit
 import Firebase
 
-class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var assetPoolTableView: UITableView!
     @IBOutlet var segmentControl: UISegmentedControl!
-    
-    //var poolArray: Array<Any> = []
-    var typeValue = ""
-    var pickerView = UIPickerView()
     
     var poolIDArray: Array<String> = []
     var poolNameArray: Array<String> = []
     var segmentChoice = 0
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getAssetList()
     }
     
-
     //Gets the asset lists from the server
     func getAssetList(){
         ref = Database.database().reference()
@@ -47,8 +40,14 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let idlist = assetList.allKeys
         for id in idlist {
             let asset = assetList.value(forKey: id as! String) as! NSDictionary
+            
+            if(asset.value(forKey: "bench") as! Int == 1){
                 poolIDArray.append(id as! String)
                 poolNameArray.append(asset.value(forKey: "Name") as! String)
+            }
+            else{
+                print("busy")
+            }
         }
         getLocationList()
     }
@@ -69,22 +68,22 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var sectionName : String!
         var sectionObjects : [String]!
     }
-     var LocAssetArray = [LocAsset]()
+    var LocAssetArray = [LocAsset]()
     
     
     func sortLocations(){
         let catlist = locationList.allKeys
-         for cat in catlist {
+        for cat in catlist {
             let UserList = locationList.value(forKey: cat as! String) as! NSDictionary
             var temp: Array<String> = []
             for user in UserList.allKeys {
-              
-            let id = UserList.value(forKey: user as! String) as! String
-            let index = poolIDArray.index(of: id)
-            if(index != nil){
-                 temp.append(poolNameArray[index!])
-            }
-            // temp.append(UserList.value(forKey: user as! String) as! String)
+                
+                let id = UserList.value(forKey: user as! String) as! String
+                let index = poolIDArray.index(of: id)
+                if(index != nil){
+                    temp.append(poolNameArray[index!])
+                }
+                // temp.append(UserList.value(forKey: user as! String) as! String)
             }
             LocAssetArray.append(LocAsset(sectionName: cat as! String, sectionObjects: temp))
         }
@@ -92,7 +91,7 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     ////
     
-   
+    
     func getSkillList(){
         ref = Database.database().reference()
         ref.child("Skills").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -127,30 +126,28 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             SkillsetArray.append(skillAsset(sectionName: cat as! String, sectionObjects: temp))
         }
-        tableView.reloadData()
+        assetPoolTableView.reloadData()
     }
     
     
-    
-    
-    
-    ////////////////////////////////////////////
-    
-    @IBAction func SegmentChange(_ sender: Any) {
-        switch segmentControl.selectedSegmentIndex {
-            case 0:
-                segmentChoice = 0;
-            case 1:
-                segmentChoice = 1;
-            case 2:
-                segmentChoice = 2;
-            default:
-                break
-        }
-        tableView.reloadData()
+    ///////////////////////
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return CurrentProjectAssetArray.count
     }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "projectCell", for: indexPath) as! projectDetailCollectionCell
+        
+        cell.name.text = CurrentProjectAssetArray[indexPath.row]
+        
+        cell.image.layer.masksToBounds = false;
+        cell.image.layer.cornerRadius = 8;
+        cell.image.layer.shadowOffset = CGSize(width: 5, height: 5)
+        cell.image.layer.shadowRadius = 5;
+        cell.image.layer.shadowOpacity = 0.5;
+        
+        return cell
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if(segmentChoice == 0){
@@ -160,14 +157,14 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return LocAssetArray.count
         }
         else{
-             return SkillsetArray.count
+            return SkillsetArray.count
         }
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(segmentChoice == 0){
-           return poolNameArray.count
+            return poolNameArray.count
         }
         else if(segmentChoice == 1){
             if(LocAssetArray.count != 0){
@@ -190,17 +187,17 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(segmentChoice == 0){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell1")!
             cell.textLabel?.text = (poolNameArray[indexPath.row])
             return cell
         }
         else if(segmentChoice == 1){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell1")!
             cell.textLabel?.text =  LocAssetArray[indexPath.section].sectionObjects[indexPath.row]
             return cell
         }
         else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell1")!
             cell.textLabel?.text =  SkillsetArray[indexPath.section].sectionObjects[indexPath.row]
             return cell
         }
@@ -211,19 +208,31 @@ class PoolViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return ""
         }
         else if(segmentChoice == 1){
-             return LocAssetArray[section].sectionName
+            return LocAssetArray[section].sectionName
         }
         else{
             return SkillsetArray[section].sectionName
         }
     }
     
-    
-    
+    ///////
+    @IBAction func segmentControl(_ sender: Any) {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            segmentChoice = 0;
+        case 1:
+            segmentChoice = 1;
+        case 2:
+            segmentChoice = 2;
+        default:
+            break
+        }
+        assetPoolTableView.reloadData()
         
+    }
     
-    ///////////////////////////////////////////////////////////////////////////////////////////
     
-  
     
+    
+
 }
