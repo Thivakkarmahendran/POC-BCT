@@ -41,7 +41,8 @@ class ProjectCreateTableViewController: UITableViewController {
             
             let ref = Database.database().reference().child("Projects").child(ProjectIDTextField.text!).setValue(data)
             let ref1 = Database.database().reference().child("Users").child(UserID).child("Projects").childByAutoId().setValue(ProjectIDTextField.text!)
-            4
+            
+             Analytics.logEvent("Project_Create", parameters: ["User_Id": UserID as NSObject, "Project_Id": ProjectIDTextField.text! as NSObject])
             
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home1") as! homeTabController
             self.present(loginVC, animated: true, completion: nil)

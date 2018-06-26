@@ -172,12 +172,16 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
         let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Assets").child(assetID).setValue(assetID)
         let ref1 = Database.database().reference().child("Assets").child(assetID).child("bench").setValue(false)
           getProjectList()
+        
+        Analytics.logEvent("Add_Asset_to_Project", parameters: ["User_Id": UserID as NSObject, "Asset_Id": assetID as NSObject, "Project_ID": CurrentProj as NSObject])
     }
     
     func removeAssetfromProject(assetID: String){
         let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Assets").child(assetID).removeValue()
         let ref1 = Database.database().reference().child("Assets").child(assetID).child("bench").setValue(true)
         getProjectList()
+        
+        Analytics.logEvent("Remove_Asset_from_Project", parameters: ["User_Id": UserID as NSObject, "Asset_Id": assetID as NSObject, "Project_ID": CurrentProj as NSObject])
     }
     
     
