@@ -24,8 +24,10 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
     func getAssetList(){
         ref = Database.database().reference()
         ref.child("Assets").observeSingleEvent(of: .value, with: { (snapshot) in
-            assetList = snapshot.value as! NSDictionary
-            self.getUserProjectList()
+            if(snapshot.value as? NSDictionary != nil){
+                assetList = snapshot.value as! NSDictionary
+                self.getUserProjectList()
+            }
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -36,12 +38,13 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
     func getUserProjectList(){
         ref = Database.database().reference()
         ref.child("Users").child(UserID).observeSingleEvent(of: .value, with: { (snapshot) in
-            
                 //print(snapshot.value!)
+            if(snapshot.value as? NSDictionary != nil){
                 let temp = snapshot.value as! NSDictionary
                 let temp1 = temp.value(forKey: "Projects") as! NSDictionary
                 userProjList =  temp1.allValues as! Array<String>
                 self.getProjectList()
+            }
             
         }) { (error) in
             print(error.localizedDescription)

@@ -23,9 +23,6 @@
 		CF8570D120C98F2C0048BCD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8570CF20C98F2C0048BCD8 /* LaunchScreen.storyboard */; };
 		CF8570DC20C98F2D0048BCD8 /* POC_BCTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570DB20C98F2D0048BCD8 /* POC_BCTTests.swift */; };
 		CF8570E720C98F2D0048BCD8 /* POC_BCTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570E620C98F2D0048BCD8 /* POC_BCTUITests.swift */; };
-		CF8570F520C98FE70048BCD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8570F420C98FE70048BCD8 /* GoogleService-Info.plist */; };
-		CF8570F620C98FE70048BCD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8570F420C98FE70048BCD8 /* GoogleService-Info.plist */; };
-		CF8570F720C98FE70048BCD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8570F420C98FE70048BCD8 /* GoogleService-Info.plist */; };
 		CF8570F920C9BCF60048BCD8 /* AssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570F820C9BCF60048BCD8 /* AssetViewController.swift */; };
 		CF8570FB20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8570FA20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift */; };
 		CF897B3720E16A200094E53C /* ProjectAssetEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF897B3620E16A200094E53C /* ProjectAssetEditViewController.swift */; };
@@ -36,6 +33,7 @@
 		CFAFBAC720DC497E001A4C98 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAFBAC620DC497E001A4C98 /* loginViewController.swift */; };
 		CFAFBAC920DC4AF3001A4C98 /* bctLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFAFBAC820DC4AF3001A4C98 /* bctLogo.jpg */; };
 		CFAFBACB20DC5856001A4C98 /* homeTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAFBACA20DC5856001A4C98 /* homeTabController.swift */; };
+		CFE3B11B20E2E2BD00CCCC20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFE3B11A20E2E2BC00CCCC20 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +82,6 @@
 		CF8570E220C98F2D0048BCD8 /* POC-BCTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "POC-BCTUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8570E620C98F2D0048BCD8 /* POC_BCTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POC_BCTUITests.swift; sourceTree = "<group>"; };
 		CF8570E820C98F2D0048BCD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF8570F420C98FE70048BCD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF8570F820C9BCF60048BCD8 /* AssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		CF8570FA20C9D5A50048BCD8 /* ProjectDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailTableViewController.swift; sourceTree = "<group>"; };
 		CF897B3620E16A200094E53C /* ProjectAssetEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectAssetEditViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +92,7 @@
 		CFAFBAC620DC497E001A4C98 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		CFAFBAC820DC4AF3001A4C98 /* bctLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bctLogo.jpg; sourceTree = "<group>"; };
 		CFAFBACA20DC5856001A4C98 /* homeTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeTabController.swift; sourceTree = "<group>"; };
+		CFE3B11A20E2E2BC00CCCC20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +190,7 @@
 			children = (
 				CF8570CD20C98F2C0048BCD8 /* Assets.xcassets */,
 				CF8570CF20C98F2C0048BCD8 /* LaunchScreen.storyboard */,
-				CF8570F420C98FE70048BCD8 /* GoogleService-Info.plist */,
+				CFE3B11A20E2E2BC00CCCC20 /* GoogleService-Info.plist */,
 				CF8570CA20C98F2B0048BCD8 /* POC_BCT.xcdatamodeld */,
 			);
 			path = Others;
@@ -391,7 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF8570D120C98F2C0048BCD8 /* LaunchScreen.storyboard in Resources */,
-				CF8570F520C98FE70048BCD8 /* GoogleService-Info.plist in Resources */,
+				CFE3B11B20E2E2BD00CCCC20 /* GoogleService-Info.plist in Resources */,
 				CF50016F20D2F0CA00084AB4 /* 1.png in Resources */,
 				CF8570CE20C98F2C0048BCD8 /* Assets.xcassets in Resources */,
 				CFAFBAC920DC4AF3001A4C98 /* bctLogo.jpg in Resources */,
@@ -405,7 +403,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8570F620C98FE70048BCD8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +410,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8570F720C98FE70048BCD8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
