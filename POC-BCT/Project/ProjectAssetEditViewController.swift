@@ -20,6 +20,9 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
     var poolNameArray: Array<String> = []
     var segmentChoice = 0
     
+    var startDate  = Date()
+    var endDate = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getProjectList()
@@ -159,33 +162,71 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
         
         assetPoolTableView.reloadData()
         collectionView.reloadData()
-        print(CurrentProjectAssetArray)
-        print("here")
-        
     }
     
-   
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    ///////////////////////
+    func getDatefromUser(assetID: String){
+        let currentDateTime = Date()
+        let alert = UIAlertController(style: .actionSheet, title: "Select start date")
+        alert.addDatePicker(mode: .date, date: currentDateTime, minimumDate: currentDateTime, maximumDate: nil) { date in
+            self.startDate = date
+        }
+        alert.addAction(image: nil, title: "Next", color: .black, style: .default) { action in
+            let alert1 = UIAlertController(style: .actionSheet, title: "Select end date")
+            alert1.addDatePicker(mode: .date, date: currentDateTime, minimumDate: currentDateTime, maximumDate: nil) { date1 in
+                self.endDate = date1
+            }
+            alert1.addAction(image: nil, title: "Done", color: .black, style: .default) { action in
+                if(self.startDate <= self.endDate){
+                    self.addAssettoProject(assetID: assetID)
+                }
+                else{
+                    let alert3 = UIAlertController(title: "Alert", message: "Start date is later than end date", preferredStyle: UIAlertControllerStyle.alert)
+                    alert3.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert3, animated: true, completion: nil)
+                }
+            }
+            alert1.addAction(title: "Cancel", style: .cancel)
+            self.present(alert1, animated: true, completion: nil)
+        }
+        
+        alert.addAction(title: "Cancel", style: .cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     func addAssettoProject(assetID: String){
+
+        let data = ["Start": Int(startDate.timeIntervalSince1970), "End": Int(endDate.timeIntervalSince1970)]
+
         let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Assets").child(assetID).setValue(assetID)
         let ref1 = Database.database().reference().child("Assets").child(assetID).child("bench").setValue(false)
-          getProjectList()
+        let ref2 = Database.database().reference().child("Assets").child(assetID).child("Assignment").child(CurrentProj).childByAutoId().setValue(data)
+    
         
+        
+        
+        
+        //refresh view
+        getProjectList()
         Analytics.logEvent("Add_Asset_to_Project", parameters: ["User_Id": UserID as NSObject, "Asset_Id": assetID as NSObject, "Project_ID": CurrentProj as NSObject])
     }
+    
+    
     
     func removeAssetfromProject(assetID: String){
         let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Assets").child(assetID).removeValue()
         let ref1 = Database.database().reference().child("Assets").child(assetID).child("bench").setValue(true)
-        getProjectList()
+         let ref2 = Database.database().reference().child("Assets").child(assetID).child("Assignment").child(CurrentProj).removeValue()
         
+        //refresh view
+        getProjectList()
         Analytics.logEvent("Remove_Asset_from_Project", parameters: ["User_Id": UserID as NSObject, "Asset_Id": assetID as NSObject, "Project_ID": CurrentProj as NSObject])
     }
     
     
-    ///////////////////////
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return CurrentProjectAssetArray.count
     }
@@ -279,22 +320,23 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
         return true
     }
     
+    
      func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
         let add = UITableViewRowAction(style: .normal, title: "Add") { action, index in
             if(self.segmentChoice == 0){
-                self.addAssettoProject(assetID: self.poolIDArray[index.row])
+                  self.getDatefromUser(assetID: self.poolIDArray[index.row])
             }
             else if(self.segmentChoice == 1){
                 let temp =  self.LocAssetArray[index.section].sectionObjects[index.row]
                 let temp1 = self.poolNameArray.index(of: temp)
                 
-                self.addAssettoProject(assetID: self.poolIDArray[temp1!])
+                self.getDatefromUser(assetID: self.poolIDArray[temp1!])
                 
             }
             else{
                 let temp =  self.SkillsetArray[index.section].sectionObjects[index.row]
                 let temp1 = self.poolNameArray.index(of: temp)
-                self.addAssettoProject(assetID: self.poolIDArray[temp1!])
+                self.getDatefromUser(assetID: self.poolIDArray[temp1!])
             }
         }
         add.backgroundColor = .blue
