@@ -76,10 +76,10 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
         for id in idlist {
             let asset = assetList.value(forKey: id as! String) as! NSDictionary
             
-            if(asset.value(forKey: "bench") as! Int == 1){
+            //if(asset.value(forKey: "bench") as! Int == 1){
                 poolIDArray.append(id as! String)
                 poolNameArray.append(asset.value(forKey: "Name") as! String)
-            }
+            //}
         }
         getLocationList()
     }
@@ -196,21 +196,56 @@ class ProjectAssetEditViewController: UIViewController, UICollectionViewDataSour
     }
     
     
-    func addAssettoProject(assetID: String){
-
-        let data = ["Start": Int(startDate.timeIntervalSince1970), "End": Int(endDate.timeIntervalSince1970)]
-
-        let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Assets").child(assetID).setValue(assetID)
-        let ref1 = Database.database().reference().child("Assets").child(assetID).child("bench").setValue(false)
-        let ref2 = Database.database().reference().child("Assets").child(assetID).child("Assignment").child(CurrentProj).childByAutoId().setValue(data)
+    func checkDate(assetID: String) -> Bool{
+        let temp = assetList.value(forKey: assetID) as! NSDictionary
+        if(temp.value(forKey: "Assignment") as? NSDictionary == nil){
+            return false
+        }
+        let temp1 = temp.value(forKey: "Assignment") as! NSDictionary
+       
+        let AssignmentList = temp1.allKeys
+        for Assignment in AssignmentList {
+            let dateList = temp1.value(forKey: Assignment as! String) as! NSDictionary
+            for date in dateList.allKeys {
+                 let temp3 = dateList.value(forKey: date as! String) as! NSDictionary
+                let dateArray = temp3.allValues as! NSArray
+               
+                let tempStartDate = dateArray[1]
+                let tempEndDate = dateArray[0]
+                
+                let sdate = NSDate(timeIntervalSince1970: tempStartDate as! TimeInterval)
+                let edate = NSDate(timeIntervalSince1970: tempEndDate as! TimeInterval)
+                
+                let bool = (((((sdate as Date) as Date) as Date) as Date) ... (edate as Date)).contains(startDate)
+                if(bool == true){
+                    return true
+                }
+            }
+            
+        }
+       return false
+    }
     
+    
+    func addAssettoProject(assetID: String){
+        let dateCheck = checkDate(assetID: assetID)
         
-        
-        
-        
-        //refresh view
-        getProjectList()
-        Analytics.logEvent("Add_Asset_to_Project", parameters: ["User_Id": UserID as NSObject, "Asset_Id": assetID as NSObject, "Project_ID": CurrentProj as NSObject])
+        if(dateCheck == true){
+            let alert3 = UIAlertController(title: "Alert", message: "Asset Unavaliable during that date", preferredStyle: UIAlertControllerStyle.alert)
+            alert3.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert3, animated: true, completion: nil)
+        }
+        else{
+             let data = ["Start": Int(startDate.timeIntervalSince1970), "End": Int(endDate.timeIntervalSince1970)]
+             
+             let ref = Database.database().reference().child("Projects").child(CurrentProj).child("Assets").child(assetID).setValue(assetID)
+             let ref1 = Database.database().reference().child("Assets").child(assetID).child("bench").setValue(false)
+             let ref2 = Database.database().reference().child("Assets").child(assetID).child("Assignment").child(CurrentProj).childByAutoId().setValue(data)
+            
+             //refresh view
+             getProjectList()
+             Analytics.logEvent("Add_Asset_to_Project", parameters: ["User_Id": UserID as NSObject, "Asset_Id": assetID as NSObject, "Project_ID": CurrentProj as NSObject])
+        }
     }
     
     
